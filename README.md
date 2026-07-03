@@ -32,7 +32,7 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 | `cargadores-centros-comerciales.html` | Modelo anfitrión para sitios de alta afluencia: espacio + conexión; comisión definida por contrato. Carga rápida DC desde 20 kW |
 | `cargadores-hoteles-hospitales.html` | Modelo anfitrión para hoteles y hospitales: AC 7 kW (huéspedes) o DC desde 20 kW (visitantes/personal), según evaluación del sitio |
 | `soluciones-para-empresas.html` | Página comercial: 2 líneas para empresas/operadores (importación de hardware + instalación). Cruza a la página de software para la plataforma |
-| `software-para-electrolineras.html` | Página comercial: licenciamiento del software CPO en dos modelos (licencia base / white-label; keyword principal "software para electrolineras"). En ambos el operador opera y recibe el dinero directo; AutoVolt no custodia |
+| `software-para-electrolineras.html` | Página comercial: licenciamiento del software CPO en dos modelos (keyword principal "software para electrolineras"). Cada tarjeta lleva un badge de estado arriba: **licencia base → Disponible** (plan piloto; la plataforma ya está construida y probada) y **white-label → Próximamente**. En ambos el operador opera y recibe el dinero directo; AutoVolt no custodia |
 | `como-poner-cargadores-en-mi-conjunto.html` | Guía SEO (top-of-funnel) que enlaza a la página comercial de conjuntos |
 | `terminos.html` | Términos y Condiciones |
 | `privacidad.html` | Política de Privacidad y Tratamiento de Datos |
@@ -86,6 +86,11 @@ ante un comité de copropiedad, un centro comercial o una empresa.
   AutoVolt **no custodia**. Los modelos "operado por AutoVolt" y "agregador" quedaron **descartados**
   (custodia de dinero). **Sin cifras publicadas** (se definen en la cotización). Detalle en
   `../Operativo/docs/fase2-multioperador/fase2-modelos-licenciamiento.md`.
+  - **Estado (3 jul 2026):** la **licencia base** (Modelo B) ya está **construida y probada** en el
+    repo operativo, así que la web la anuncia como **Disponible en plan piloto** (con acompañamiento;
+    no self-service — aún sin pasarela automática integrada y con el hardware DC pendiente de validar).
+    El **white-label** (Modelo C) sigue como **Próximamente**. Encuadre honesto: verbos de *cotizar*,
+    no "demo"; el estado se lee de un vistazo en el badge de cada tarjeta.
 
 Al editar estas páginas, mantener este criterio: preferir verbos como *evaluamos, cotizamos,
 proponemos* y condicionantes (*sujeto a, según contrato, cuando el flujo lo justifique*)
@@ -112,14 +117,14 @@ O abre `index.html` directamente en el navegador.
 1. Publica el contenido de `Web/` como raíz del repositorio de GitHub Pages (p. ej. `autovolt-web`) y haz push a la rama `main`.
 2. En **Settings → Pages**: *Source* = **Deploy from a branch**, rama `main`, carpeta `/ (root)`.
 3. El archivo `CNAME` ya fija el dominio `www.autovoltenergy.net`. En **Settings → Pages → Custom domain** debe quedar verificado.
-4. En Squarespace DNS: registro **CNAME** `www` → `morpheus8810-blip.github.io`, y **4 registros A** del apex (host `@`) → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (para que el dominio sin `www` también resuelva y GitHub lo redirija a `www`).
+4. En Squarespace DNS: registro **CNAME** `www` → `autovolt-energy.github.io`, y **4 registros A** del apex (host `@`) → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (para que el dominio sin `www` también resuelva y GitHub lo redirija a `www`).
 5. Activa **Enforce HTTPS** (Settings → Pages) una vez emitido el certificado, para forzar `http → https`. Si el certificado no se emite, borra y vuelve a poner el *Custom domain* para re-disparar la emisión.
 
 Cada push a `main` republica el sitio automáticamente. No depende de `Operativo/` ni del deploy a Hetzner.
 
 > **Estado de despliegue:** sitio en producción con **HTTPS forzado**. Repo
-> `morpheus8810-blip/autovolt-web` (rama `main`); apex `autovoltenergy.net` y `www` resuelven a
-> GitHub Pages (CNAME `www` → `morpheus8810-blip.github.io` + 4 registros A del apex a
+> `AutoVolt-Energy/autovolt-web` (rama `main`); apex `autovoltenergy.net` y `www` resuelven a
+> GitHub Pages (CNAME `www` → `autovolt-energy.github.io` + 4 registros A del apex a
 > `185.199.108–111.153`); certificado Let's Encrypt para ambos. El apex redirige a `https://www…`.
 
 ### SEO técnico
