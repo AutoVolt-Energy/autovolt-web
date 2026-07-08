@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="main.js"></script>
 
   <script type="application/ld+json">
   {
@@ -68,6 +69,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
   <!-- ── Header ─────────────────────────────────────────────────────── -->
   <header class="nav">
     <a href="#inicio" class="nav__brand">
@@ -89,67 +92,80 @@
       <a href="#contacto">Contacto</a>
     </nav>
     <a href="prefactibilidad.html" class="btn btn--primary nav__cta">Solicitar evaluación</a>
+    <button type="button" class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
-  <main>
+  <main id="contenido">
     <!-- ── Hero ─────────────────────────────────────────────────────── -->
-    <section id="inicio" class="hero">
+    <section id="inicio" class="hero hero--split">
       <div class="hero__glow"></div>
-      <div class="hero__content">
+      <div class="hero__content reveal">
+        <span class="eyebrow">⚡ Carga eléctrica · Colombia</span>
         <h1>Potencia para <span class="grad">cada kilómetro</span>.</h1>
         <p class="hero__sub">
-          AutoVolt Energy es una empresa dedicada a la instalación de puntos de carga para
-          vehículos eléctricos e híbridos enchufables. Operamos cargadores en conjuntos
-          residenciales, hoteles, centros comerciales y zonas de alta afluencia vial, con
-          proyectos sin inversión inicial para el propietario; importamos e instalamos el
-          hardware; y pronto licenciaremos nuestra plataforma de software, en varios modelos, para que
-          empresas y operadores monten su red de carga —desde operar en nuestra red hasta con su propia marca.
+          AutoVolt Energy instala y opera puntos de carga para vehículos eléctricos e híbridos
+          enchufables —en conjuntos residenciales, hoteles, centros comerciales y zonas de alta
+          afluencia vial, sin inversión inicial para el propietario—; importamos e instalamos el
+          hardware; y licenciamos nuestra plataforma de software para que empresas y operadores
+          monten su red de carga, desde operar en nuestra red hasta con su propia marca.
         </p>
         <div class="hero__actions">
           <a href="prefactibilidad.html" class="btn btn--primary btn--lg">Evalúa tu sitio gratis</a>
           <a href="#soluciones" class="btn btn--ghost btn--lg">Ver soluciones</a>
         </div>
+        <div class="techstrip">
+          <span class="techchip"><b>OCPP</b> 1.6-J</span>
+          <span class="techchip">Pagos <b>locales</b></span>
+          <span class="techchip">Facturación <b>DIAN</b></span>
+          <span class="techchip">Norma <b>RETIE/SIC</b></span>
+        </div>
+      </div>
+      <div class="hero__art reveal" data-delay="2">
+        <img class="hero__photo art--float" src="assets/ev-charger-suv.webp" width="1200" height="900"
+             fetchpriority="high" alt="Estación de carga AutoVolt Energy cargando un SUV eléctrico en un entorno oscuro y moderno" />
       </div>
     </section>
 
     <!-- ── Soluciones (hub) ─────────────────────────────────────────── -->
     <section id="soluciones" class="section">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>Una solución para cada necesidad</h2>
         <p>Pon cargadores en tu sitio bajo un modelo sujeto a prefactibilidad, monta tu propio negocio de carga, o simplemente carga tu vehículo. Elige tu camino.</p>
       </div>
       <div class="audience">
-        <article class="audience__card">
+        <article class="audience__card reveal" data-delay="1">
           <span class="audience__tag">Conjuntos residenciales</span>
           <h3>Cargadores sin inversión inicial</h3>
           <p>En ubicaciones viables, ponemos la infraestructura en tu parqueadero comunal sin inversión inicial para la copropiedad. Nosotros operamos, y el conjunto puede elegir entre participación de ingresos o una tarifa preferencial para residentes.</p>
           <a href="cargadores-conjuntos-residenciales.html" class="btn btn--primary">Ver cómo funciona</a>
         </article>
-        <article class="audience__card">
+        <article class="audience__card reveal" data-delay="2">
           <span class="audience__tag">Centros comerciales</span>
           <h3>Monetiza tu parqueadero</h3>
           <p>Tú tienes el espacio y la conexión; nosotros evaluamos, instalamos y operamos carga rápida cuando la capacidad y el flujo lo justifican. La comisión se define por contrato según el caso.</p>
           <a href="cargadores-centros-comerciales.html" class="btn btn--primary">Ver cómo funciona</a>
         </article>
-        <article class="audience__card">
+        <article class="audience__card reveal" data-delay="3">
           <span class="audience__tag">Hoteles y hospitales</span>
           <h3>Carga para huéspedes y visitantes</h3>
           <p>Suma carga eléctrica como amenidad: carga rápida DC para visitantes y personal, o carga nocturna para tus huéspedes. Evaluamos, instalamos y operamos bajo modelo anfitrión, con comisión por contrato.</p>
           <a href="cargadores-hoteles-hospitales.html" class="btn btn--primary">Ver cómo funciona</a>
         </article>
-        <article class="audience__card">
+        <article class="audience__card reveal" data-delay="1">
           <span class="audience__tag">Empresas y operadores</span>
           <h3>Monta tu negocio de carga desde cero</h3>
           <p>¿Empiezas de cero? Te traemos el hardware, lo instalamos y lo conectamos a la plataforma para que salgas al mercado con tu marca. Toma una línea o el paquete completo.</p>
           <a href="soluciones-para-empresas.html" class="btn btn--primary">Ver soluciones</a>
         </article>
-        <article class="audience__card">
+        <article class="audience__card reveal" data-delay="2">
           <span class="audience__tag">Operadores / Software · Disponible</span>
           <h3>Licencia nuestro software CPO</h3>
           <p>¿Ya tienes cargadores o un proyecto? Nuestra plataforma CPO sobre OCPP 1.6-J ya está disponible en <strong>licencia base</strong> (plan piloto): licénciala y opérala tú con la app de AutoVolt. La versión <strong>white-label</strong> (tu propia marca y app) llega próximamente. Tú operas y el dinero de las cargas entra a tu cuenta; nosotros construimos y mantenemos el software.</p>
           <a href="software-para-electrolineras.html" class="btn btn--primary">Conocer y cotizar</a>
         </article>
-        <article class="audience__card">
+        <article class="audience__card reveal" data-delay="3">
           <span class="audience__tag">Conductores</span>
           <h3>Carga tu eléctrico sin complicaciones</h3>
           <p>Encuentra cargadores cerca de ti, inicia con un escaneo, paga desde tu billetera y lleva el control de tu energía. Todo desde una app.</p>
@@ -158,40 +174,138 @@
       </div>
     </section>
 
+    <!-- ── Software: la tecnología a la vista ───────────────────────── -->
+    <section id="software" class="section section--alt">
+      <div class="split">
+        <div class="split__media reveal">
+          <div class="device">
+            <div class="phone">
+              <div class="phone__notch"></div>
+              <div class="phone__screen">
+                <div class="appbar">
+                  <span class="appbar__logo">⚡</span>
+                  <span class="appbar__title">AutoVolt</span>
+                  <span class="appbar__bal">$ 42.500</span>
+                </div>
+                <div class="appmap">
+                  <div class="appmap__road" style="top:44px;left:-14px;width:190px;transform:rotate(12deg)"></div>
+                  <div class="appmap__road" style="top:104px;left:34px;width:210px;transform:rotate(-9deg)"></div>
+                  <div class="pin pin--ping" style="top:44px;left:150px"></div>
+                  <div class="pin pin--blue" style="top:96px;left:58px"></div>
+                  <div class="pin" style="top:66px;left:198px"></div>
+                </div>
+                <div class="appcard">
+                  <svg class="ring" viewBox="0 0 60 60">
+                    <defs><linearGradient id="ringgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#39E659"/><stop offset="1" stop-color="#4285F4"/></linearGradient></defs>
+                    <circle class="track" cx="30" cy="30" r="26"/>
+                    <circle class="bar" cx="30" cy="30" r="26"/>
+                    <text x="30" y="35" text-anchor="middle">68%</text>
+                  </svg>
+                  <div class="appcard__info">
+                    <small>Cargando</small>
+                    <b>18,4 kWh</b>
+                    <span>● En vivo · 7 kW</span>
+                  </div>
+                </div>
+                <div class="approw"><i></i> Sesión iniciada con un QR</div>
+                <div class="approw"><i></i> Pago desde tu billetera</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="split__body reveal" data-delay="1">
+          <span class="eyebrow">Nuestra plataforma</span>
+          <h2 style="font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-1px;">Software propio, de punta a punta</h2>
+          <p style="margin-top:14px;color:var(--text-secondary);font-size:17px;">
+            La app para conductores y el panel para operadores corren sobre nuestra propia plataforma CPO
+            (OCPP 1.6-J). Mapa en tiempo real, inicio por QR, billetera y cobro por kWh para el conductor;
+            monitoreo, tarifas, sesiones en vivo y reportes para el operador.
+          </p>
+          <ul class="feature-list" style="margin-top:20px;">
+            <li>App para conductores: mapa, QR, billetera e historial</li>
+            <li>Panel de operador: sesiones en vivo, tarifas y energía por cargador</li>
+            <li>Pago desacoplado del cargador vía pasarela local</li>
+            <li>Facturación electrónica DIAN y reportes de operación</li>
+          </ul>
+          <div class="hero__actions" style="margin-top:26px;justify-content:flex-start;">
+            <a href="software-para-electrolineras.html" class="btn btn--primary">Ver el software para electrolineras</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="split split--rev" style="margin-top:64px;">
+        <div class="split__media reveal">
+          <div class="panel">
+            <div class="panel__bar"><i></i><i></i><i></i><span>Panel del operador · AutoVolt</span></div>
+            <div class="panel__body">
+              <div class="kpis">
+                <div class="kpi green"><small>Energía hoy</small><b>412 kWh</b></div>
+                <div class="kpi"><small>Sesiones</small><b>87</b></div>
+                <div class="kpi"><small>Cargadores</small><b>6/6</b></div>
+              </div>
+              <div class="chart">
+                <span style="height:40%"></span><span style="height:62%"></span><span style="height:48%"></span>
+                <span style="height:78%"></span><span style="height:66%"></span><span style="height:92%"></span><span style="height:72%"></span>
+              </div>
+              <div class="sessions">
+                <div class="sessrow"><i class="live"></i><span>Cargador 03 · CCS2 (DC)</span><b>22 kW</b></div>
+                <div class="sessrow"><i class="live"></i><span>Cargador 01 · Type 2 (AC)</span><b>7 kW</b></div>
+                <div class="sessrow"><i style="background:#94A1B5"></i><span>Cargador 05 · libre</span><b>—</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="split__body reveal" data-delay="1">
+          <span class="eyebrow">Para operadores</span>
+          <h2 style="font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-1px;">Opera tu red desde un panel</h2>
+          <p style="margin-top:14px;color:var(--text-secondary);font-size:17px;">
+            Enciende y monitorea tus cargadores, define tarifas por kWh, sigue las sesiones en vivo y mira la
+            energía y los ingresos de cada punto. Tú operas y el dinero de las cargas entra directo a tu cuenta;
+            nosotros construimos y mantenemos el software.
+          </p>
+          <div class="techstrip" style="margin-top:22px;">
+            <span class="techchip">Carga <b>AC</b> y <b>DC</b></span>
+            <span class="techchip">Marca <b>propia</b> (white-label)</span>
+            <span class="techchip">Soporte en <b>español</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Conductores: la app ──────────────────────────────────────── -->
-    <section id="conductores" class="section section--alt">
-      <div class="section__head">
+    <section id="conductores" class="section">
+      <div class="section__head reveal">
         <h2>Para conductores: carga sin complicaciones</h2>
         <p>Diseñada para que recargar tu vehículo sea tan simple como llenar el tanque — pero más inteligente.</p>
       </div>
       <div class="grid grid--3">
-        <article class="card">
-          <div class="card__icon">📍</div>
+        <article class="card reveal" data-delay="1">
+          <div class="card__icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <h3>Encuentra cargadores</h3>
           <p>Localiza estaciones disponibles cerca de ti, con estado en tiempo real: disponible, en uso o fuera de servicio.</p>
         </article>
-        <article class="card">
-          <div class="card__icon">📲</div>
+        <article class="card reveal" data-delay="2">
+          <div class="card__icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg></div>
           <h3>Inicia con un QR</h3>
           <p>Escanea el código del cargador y comienza la sesión en segundos. Sin tarjetas físicas ni complicaciones.</p>
         </article>
-        <article class="card">
-          <div class="card__icon">💳</div>
+        <article class="card reveal" data-delay="3">
+          <div class="card__icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
           <h3>Paga sin fricción</h3>
           <p>El cobro se calcula automáticamente según tu consumo. Recarga tu billetera y olvídate de filas.</p>
         </article>
-        <article class="card">
-          <div class="card__icon">📊</div>
+        <article class="card reveal" data-delay="1">
+          <div class="card__icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
           <h3>Tu historial siempre</h3>
           <p>Consulta cada sesión: energía entregada, duración y costo. Control total de tu gasto energético.</p>
         </article>
-        <article class="card">
-          <div class="card__icon">🔋</div>
+        <article class="card reveal" data-delay="2">
+          <div class="card__icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1"/><path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M22 11v2"/><path d="m11 7-3 5h4l-3 5"/></svg></div>
           <h3>Carga monitoreada</h3>
           <p>Sigue el avance de la carga en vivo y recibe avisos cuando tu vehículo esté listo.</p>
         </article>
-        <article class="card">
-          <div class="card__icon">🛡️</div>
+        <article class="card reveal" data-delay="3">
+          <div class="card__icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <h3>Seguro y confiable</h3>
           <p>Tus datos y pagos protegidos. Soporte por los canales de AutoVolt y monitoreo de la operación disponible.</p>
         </article>
@@ -200,7 +314,7 @@
 
     <!-- ── Descargar app ────────────────────────────────────────────── -->
     <section id="descargar" class="section download">
-      <div class="download__inner">
+      <div class="download__inner reveal">
         <h2>Lleva AutoVolt en tu bolsillo</h2>
         <p>Descarga la app y empieza a cargar de forma inteligente hoy mismo.</p>
         <div class="download__badges">
@@ -232,16 +346,16 @@
 
     <!-- ── Contacto ─────────────────────────────────────────────────── -->
     <section id="contacto" class="section section--alt">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>Hablemos</h2>
         <p>¿Tienes un conjunto, un centro comercial, una flota o una idea? Estamos para ayudarte.</p>
       </div>
       <div class="contact">
-        <a class="contact__card" href="mailto:contacto@autovoltenergy.net">
+        <a class="contact__card reveal" data-delay="1" href="mailto:contacto@autovoltenergy.net">
           <span class="contact__label">Correo</span>
           <span class="contact__value">contacto@autovoltenergy.net</span>
         </a>
-        <a class="contact__card" href="https://wa.me/573144907237?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20AutoVolt%20Energy" target="_blank" rel="noopener">
+        <a class="contact__card reveal" data-delay="2" href="https://wa.me/573144907237?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20AutoVolt%20Energy" target="_blank" rel="noopener">
           <span class="contact__label">WhatsApp</span>
           <span class="contact__value">+57 314 490 7237</span>
         </a>
@@ -269,6 +383,5 @@
     <span>WhatsApp</span>
   </a>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

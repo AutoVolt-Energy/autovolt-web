@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="main.js"></script>
 
   <script type="application/ld+json">
   {
@@ -123,6 +124,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
   <header class="nav">
     <a href="index.html" class="nav__brand">
       <img src="assets/logo.png" alt="AutoVolt Energy" />
@@ -142,13 +145,17 @@
       <a href="index.html#contacto">Contacto</a>
     </nav>
     <a href="#cotizar" class="btn btn--primary nav__cta">Avísame</a>
+    <button type="button" class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
-  <main>
+  <main id="contenido">
     <!-- ── Hero ─────────────────────────────────────────────────────── -->
-    <section class="hero">
+    <section class="hero hero--split">
       <div class="hero__glow"></div>
-      <div class="hero__content">
+      <div class="hero__content reveal">
+        <span class="eyebrow">Plataforma CPO · OCPP 1.6-J</span>
         <h1>Software para <span class="grad">electrolineras</span>, a tu medida.</h1>
         <p class="hero__sub">
           La plataforma CPO que opera carga eléctrica en Colombia, para montar tu red en el modelo que
@@ -167,42 +174,63 @@
         </div>
         <p class="download__note" style="margin-top:22px;">¿Vas a empezar de cero? También importamos e instalamos el hardware: mira el paquete para <a href="soluciones-para-empresas.html">empresas y operadores</a>.</p>
       </div>
+      <div class="hero__art reveal" data-delay="2" aria-hidden="true">
+        <div class="panel art--float">
+          <div class="panel__bar"><i></i><i></i><i></i><span>Panel del operador · AutoVolt</span></div>
+          <div class="panel__body">
+            <div class="kpis">
+              <div class="kpi green"><small>Energía hoy</small><b>412 kWh</b></div>
+              <div class="kpi"><small>Sesiones</small><b>87</b></div>
+              <div class="kpi"><small>Cargadores</small><b>6/6</b></div>
+            </div>
+            <div class="chart">
+              <span style="height:40%"></span><span style="height:62%"></span><span style="height:48%"></span>
+              <span style="height:78%"></span><span style="height:66%"></span><span style="height:92%"></span><span style="height:72%"></span>
+            </div>
+            <div class="sessions">
+              <div class="sessrow"><i class="live"></i><span>Cargador 03 · CCS2 (DC)</span><b>22 kW</b></div>
+              <div class="sessrow"><i class="live"></i><span>Cargador 01 · Type 2 (AC)</span><b>7 kW</b></div>
+              <div class="sessrow"><i style="background:#94A1B5"></i><span>Cargador 05 · libre</span><b>—</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ── El reto ──────────────────────────────────────────────────── -->
     <section class="section">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>Operar un CPO no es solo instalar cargadores</h2>
         <p>Una estación de carga es, sobre todo, un negocio de software. Sin él, los cargadores son fierro caro.</p>
       </div>
       <div class="grid grid--3">
         <article class="card">
-          <div class="card__icon">🎛️</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg></div>
           <h3>Gestionar los cargadores</h3>
           <p>Encenderlos, monitorearlos, detectar fallas y controlarlos a distancia vía OCPP.</p>
         </article>
         <article class="card">
-          <div class="card__icon">💳</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg></div>
           <h3>Cobrar a los conductores</h3>
           <p>App, saldo/billetera, pasarela de pago y precios por kWh — de forma confiable.</p>
         </article>
         <article class="card">
-          <div class="card__icon">🧾</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></div>
           <h3>Facturar y contabilizar</h3>
           <p>Facturación electrónica DIAN, reportes de energía e ingresos por sesión.</p>
         </article>
         <article class="card">
-          <div class="card__icon">📲</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
           <h3>Dar servicio al conductor</h3>
           <p>Encontrar el cargador, iniciar la carga, ver el estado y recibir soporte.</p>
         </article>
         <article class="card">
-          <div class="card__icon">🏗️</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1Z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><path d="M14 6a6 6 0 0 1 6 6v3"/></svg></div>
           <h3>Construir todo esto</h3>
           <p>Un equipo de desarrollo propio cuesta años y mucho capital antes del primer peso. Con AutoVolt te ahorras tiempo y dinero.</p>
         </article>
         <article class="card">
-          <div class="card__icon">🔄</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
           <h3>Mantenerlo 24/7</h3>
           <p>Actualizaciones, seguridad, disponibilidad y evolución constante del sistema.</p>
         </article>
@@ -211,23 +239,23 @@
 
     <!-- ── Para quién ───────────────────────────────────────────────── -->
     <section class="section section--alt">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>¿Para quién es?</h2>
         <p>Si tienes (o quieres tener) cargadores para vehículos eléctricos —carga lenta (AC) o rápida (DC)— y quieres cobrar por su uso, este software es para ti.</p>
       </div>
       <div class="grid grid--3">
         <article class="card card--service">
-          <div class="card__icon">🏢</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></div>
           <h3>Centros comerciales y parqueaderos</h3>
           <p>Convierte tus plazas en un servicio de carga —lenta (AC) o rápida (DC)— que factura y atrae visitantes.</p>
         </article>
         <article class="card card--service">
-          <div class="card__icon">⛽</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" x2="15" y1="22" y2="22"/><line x1="4" x2="14" y1="9" y2="9"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2 2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg></div>
           <h3>Estaciones de servicio</h3>
           <p>Suma carga DC rápida a tu negocio con conectores CCS2 y cobro automático.</p>
         </article>
         <article class="card card--service">
-          <div class="card__icon">🚚</div>
+          <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
           <h3>Flotas y empresas</h3>
           <p>Controla el consumo de tu flota eléctrica con tarifas internas y reportes por vehículo.</p>
         </article>
@@ -236,7 +264,7 @@
 
     <!-- ── Cómo funciona ────────────────────────────────────────────── -->
     <section id="como" class="section">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>De cero a operando en 3 pasos</h2>
         <p>Te acompañamos en el proceso, desde la evaluación del equipo hasta la primera operación validada.</p>
       </div>
@@ -261,7 +289,7 @@
 
     <!-- ── Modelos de licenciamiento ────────────────────────────────── -->
     <section class="section section--alt">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>Elige el modelo que se ajusta a ti</h2>
         <p>No hay una sola forma de trabajar con nuestro software: licencias la plataforma y la operas tú —con la app de AutoVolt o con tu propia marca—. En ambos casos, el dinero de las cargas entra directo a tu cuenta. Cuéntanos tu caso y te proponemos el mejor. El alcance y los costos quedan definidos en la cotización.</p>
       </div>
@@ -311,7 +339,7 @@
 
     <!-- ── Pago desacoplado (no al POS chino) ───────────────────────── -->
     <section class="section section--alt">
-      <div class="section__head">
+      <div class="section__head reveal">
         <p class="platform__kicker">Una decisión que te ahorra dinero y dolores de cabeza</p>
         <h2>El pago vive en tu plataforma, no en el cargador</h2>
         <p>Muchos cargadores chinos ofrecen un “terminal de pago con tarjeta” (POS) integrado. En Colombia, ese módulo es prácticamente inservible — y no lo necesitas.</p>
@@ -340,7 +368,7 @@
 
     <!-- ── ¿Por qué no una plataforma extranjera? ───────────────────── -->
     <section class="section">
-      <div class="section__head">
+      <div class="section__head reveal">
         <p class="platform__kicker">¿Comparando con plataformas del exterior?</p>
         <h2>Hecho para Colombia, a una fracción del costo</h2>
         <p>Existen plataformas de carga en Europa y EE.UU. — y son buenas. Pero están hechas para otros mercados: te cobran en dólares o euros, no facturan a la DIAN, no integran los pagos locales y te dan soporte en inglés. Terminas pagando varias veces más y armando por tu cuenta todo lo colombiano.</p>
@@ -369,7 +397,7 @@
 
     <!-- ── FAQ ──────────────────────────────────────────────────────── -->
     <section class="section section--alt">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>Preguntas frecuentes</h2>
         <p>Lo que más nos preguntan sobre el software para electrolineras.</p>
       </div>
