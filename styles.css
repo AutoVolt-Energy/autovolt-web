@@ -389,6 +389,13 @@ a { color: inherit; text-decoration: none; }
 /* ── Selector de público (conductores / empresas) ──────────────────── */
 .audience { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
 .audience--2 { grid-template-columns: repeat(2, 1fr); }
+.audience--solo { display: block; max-width: 660px; margin-inline: auto; }
+
+/* ── Encabezados de grupo del hub de soluciones ────────────────────── */
+.audience-group { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 48px 0 20px; }
+.audience-group:first-of-type { margin-top: 8px; }
+.audience-group__q { font-size: 22px; font-weight: 800; letter-spacing: -.3px; color: var(--text-primary); }
+.audience-group__hint { font-size: 15px; font-weight: 600; color: var(--charge-green); }
 .audience__card {
   position: relative;
   display: flex;
