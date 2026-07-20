@@ -1,4 +1,42 @@
+# AutoVolt Energy — robots.txt
+# Permitimos rastreo completo, incluyendo buscadores y asistentes de IA.
+
 User-agent: *
+Allow: /
+
+# ── Asistentes y buscadores de IA (explícitamente permitidos) ──
+# Queremos aparecer como fuente cuando alguien pregunta por carga eléctrica en Colombia.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://www.autovoltenergy.net/sitemap.xml

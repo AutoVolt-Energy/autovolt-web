@@ -2,7 +2,7 @@
 
 Sitio web oficial (landing público) de **AutoVolt Energy**. Presenta la propuesta
 para **conductores** (app), **conjuntos residenciales**, **hoteles y hospitales**,
-**centros comerciales**, **micromovilidad** (patinetas, scooters y motos eléctricas),
+**centros comerciales y parqueaderos**, **micromovilidad** (patinetas, scooters y motos eléctricas),
 **empresas/operadores** (importación e instalación de hardware)
 y **operadores que licencian el software** (dos modelos: licencia base y white-label), y aloja las páginas legales.
 
@@ -28,9 +28,9 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 
 | Archivo | Propósito |
 |---|---|
-| `index.html` | Landing principal (hub de soluciones **agrupado por intención**: *¿Tienes un espacio?* —conjuntos, centros comerciales, hoteles y hospitales, micromovilidad—, *¿Quieres operar?* —empresas/hardware, software— y *¿Conduces?* —app conductores—; más sección de conductores y contacto) |
+| `index.html` | Landing principal (hub de soluciones **agrupado por intención**: *¿Tienes un espacio?* —conjuntos, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad—, *¿Quieres operar?* —empresas/hardware, software— y *¿Conduces?* —app conductores—; más sección de conductores y contacto) |
 | `cargadores-conjuntos-residenciales.html` | Modelo anfitrión sujeto a prefactibilidad: la copropiedad puede elegir participación de ingresos o tarifa preferencial. 100% residencial, carga lenta AC de 7 kW. Ofrece micromovilidad como opción complementaria (sección "Dos formas de cargar" + enlace cruzado) |
-| `cargadores-centros-comerciales.html` | Modelo anfitrión para sitios de alta afluencia: espacio + conexión; comisión definida por contrato. Carga rápida DC desde 20 kW |
+| `cargadores-centros-comerciales.html` | Modelo anfitrión para **centros comerciales y parqueaderos** (públicos/privados y cadenas) y zonas de alta afluencia: espacio + conexión; comisión por contrato. Carga rápida DC desde 20 kW para carros **y** estación AC para micromovilidad en el mismo sitio. Cross-link con micromovilidad |
 | `cargadores-hoteles-hospitales.html` | Modelo anfitrión para hoteles y hospitales: AC 7 kW (huéspedes) o DC desde 20 kW (visitantes/personal), según evaluación del sitio |
 | `cargadores-micromovilidad.html` | Carga AC para patinetas, scooters y motos eléctricas. Estaciones multi-toma (2–20 tomas) sobre OCPP; **modelo anfitrión** (comisión por contrato) o **suministro del equipo** al operador. Cobro por la app por tiempo/sesión/energía. Segmentos: flotas de domicilios, universidades, conjuntos y comercios |
 | `soluciones-para-empresas.html` | Página comercial: 2 líneas para empresas/operadores (importación de hardware + instalación). Cruza a la página de software para la plataforma |
@@ -51,7 +51,7 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 Dominio canónico: **`https://www.autovoltenergy.net`** (todas las `<link rel="canonical">`,
 `og:url` y el `sitemap.xml` apuntan ahí).
 
-- **Estrategia:** una página por intención de búsqueda (conjuntos residenciales, centros comerciales, hoteles y hospitales, micromovilidad, empresas/operadores, software).
+- **Estrategia:** una página por intención de búsqueda (conjuntos residenciales, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad, empresas/operadores, software).
 - **Datos estructurados (JSON-LD):** `Organization` + `WebSite` (home); `Service`,
   `BreadcrumbList` y `FAQPage` en las páginas comerciales; `BreadcrumbList` en
   `prefactibilidad.html`; `Article` + `BreadcrumbList` + `FAQPage` en la guía.
@@ -84,8 +84,13 @@ ante un comité de copropiedad, un centro comercial o una empresa.
   Es cross-sell natural de conjuntos, hoteles y centros comerciales. Candidatos de hardware evaluados
   (sin contratar): NASN (10–20 tomas) y Zhongchongfu (2 canales 3,5 kW), pendientes del filtro de
   certificación (ISO 9001 con alcance + informes de ensayo ≤9 meses).
-- **Centros comerciales:** se enmarca como modelo a comisión definida por contrato, con
-  carga rápida (DC desde 20 kW) solo donde la capacidad y el flujo lo justifiquen.
+- **Centros comerciales y parqueaderos:** una sola página (`cargadores-centros-comerciales.html`, menú
+  "Centros comerciales y parqueaderos") cubre centros comerciales, **parqueaderos** públicos/privados y
+  cadenas, y zonas de alta afluencia. Modelo a comisión por contrato, con carga rápida (DC desde 20 kW)
+  para carros donde la capacidad y el flujo lo justifiquen, **y estación AC para micromovilidad** (motos
+  de domicilio, scooters, patinetas) en el mismo sitio. Se decidió **fusionar parqueaderos aquí** (en vez
+  de página propia) por el alto solapamiento de modelo/pitch/keywords; la página de parqueaderos aparte
+  nunca se desplegó. Cross-link con micromovilidad.
 - **Empresas/operadores:** dos líneas (importación de hardware + instalación) sujetas a alcance,
   permisos y compatibilidad (p. ej. OCPP 1.6-J). La plataforma se ofrece aparte, en la página de software.
 - **Software (operadores):** se ofrece en **dos modelos de licenciamiento**: **licencia base** (el

@@ -1,0 +1,25 @@
+# AutoVolt Energy
+
+> Operador de carga (CPO) y proveedor de software para electrolineras en Colombia. AutoVolt Energy instala y opera cargadores para vehículos eléctricos y micromovilidad bajo modelo anfitrión (sin inversión inicial para el sitio), importa e instala hardware, y licencia su plataforma CPO sobre OCPP 1.6-J. Lema: "Potencia para cada kilómetro."
+
+AutoVolt Energy S.A.S es una empresa colombiana con sede en Bogotá y cobertura en Colombia. Contacto: WhatsApp +57 314 490 7237 · ventas@autovoltenergy.net. Cumplimiento: RETIE/SIC, facturación DIAN, pagos locales. Todos los proyectos van sujetos a prefactibilidad técnica, eléctrica y contractual; la comisión se define por contrato (sin cifras cerradas publicadas).
+
+## Líneas de negocio — cargadores bajo modelo anfitrión o equipo propio
+- [Conjuntos residenciales](https://www.autovoltenergy.net/cargadores-conjuntos-residenciales.html): carga lenta AC de 7 kW en parqueaderos comunales, sin inversión inicial para la copropiedad; participación de ingresos o tarifa preferencial para residentes.
+- [Centros comerciales y parqueaderos](https://www.autovoltenergy.net/cargadores-centros-comerciales.html): monetiza cupos con carga rápida DC (desde 20 kW) para carros y estaciones AC para micromovilidad, en centros comerciales, parqueaderos públicos/privados y cadenas.
+- [Hoteles y hospitales](https://www.autovoltenergy.net/cargadores-hoteles-hospitales.html): carga AC de 7 kW para huéspedes y carga rápida DC para visitantes y personal.
+- [Micromovilidad](https://www.autovoltenergy.net/cargadores-micromovilidad.html): estaciones de carga AC multi-toma para patinetas, scooters y motos eléctricas (flotas de domicilio, universidades, conjuntos, comercios).
+
+## Software y hardware para operadores
+- [Software para electrolineras](https://www.autovoltenergy.net/software-para-electrolineras.html): licenciamiento de la plataforma CPO sobre OCPP 1.6-J. Licencia base disponible (plan piloto); white-label (marca propia) próximamente. El operador opera y recibe el dinero directo; AutoVolt no custodia.
+- [Empresas y operadores](https://www.autovoltenergy.net/soluciones-para-empresas.html): importación e instalación de hardware para montar una red de carga.
+
+## Para conductores
+- App para encontrar cargadores, iniciar carga con un escaneo y pagar desde la billetera.
+
+## Acción
+- [Solicita una evaluación de prefactibilidad gratuita](https://www.autovoltenergy.net/prefactibilidad.html)
+
+## Legal
+- [Términos y Condiciones](https://www.autovoltenergy.net/terminos.html)
+- [Política de Privacidad](https://www.autovoltenergy.net/privacidad.html)
