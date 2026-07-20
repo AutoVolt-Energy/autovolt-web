@@ -2,7 +2,8 @@
 
 Sitio web oficial (landing público) de **AutoVolt Energy**. Presenta la propuesta
 para **conductores** (app), **conjuntos residenciales**, **hoteles y hospitales**,
-**centros comerciales**, **empresas/operadores** (importación e instalación de hardware)
+**centros comerciales**, **micromovilidad** (patinetas, scooters y motos eléctricas),
+**empresas/operadores** (importación e instalación de hardware)
 y **operadores que licencian el software** (dos modelos: licencia base y white-label), y aloja las páginas legales.
 
 Es un sitio **100% estático**: HTML + CSS, sin framework ni paso de build.
@@ -27,10 +28,11 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 
 | Archivo | Propósito |
 |---|---|
-| `index.html` | Landing principal (hub de soluciones: conjuntos residenciales, centros comerciales, hoteles y hospitales, empresas/operadores, software; sección de conductores y contacto) |
-| `cargadores-conjuntos-residenciales.html` | Modelo anfitrión sujeto a prefactibilidad: la copropiedad puede elegir participación de ingresos o tarifa preferencial. 100% residencial, carga lenta AC de 7 kW |
+| `index.html` | Landing principal (hub de soluciones **agrupado por intención**: *¿Tienes un espacio?* —conjuntos, centros comerciales, hoteles y hospitales, micromovilidad—, *¿Quieres operar?* —empresas/hardware, software— y *¿Conduces?* —app conductores—; más sección de conductores y contacto) |
+| `cargadores-conjuntos-residenciales.html` | Modelo anfitrión sujeto a prefactibilidad: la copropiedad puede elegir participación de ingresos o tarifa preferencial. 100% residencial, carga lenta AC de 7 kW. Ofrece micromovilidad como opción complementaria (sección "Dos formas de cargar" + enlace cruzado) |
 | `cargadores-centros-comerciales.html` | Modelo anfitrión para sitios de alta afluencia: espacio + conexión; comisión definida por contrato. Carga rápida DC desde 20 kW |
 | `cargadores-hoteles-hospitales.html` | Modelo anfitrión para hoteles y hospitales: AC 7 kW (huéspedes) o DC desde 20 kW (visitantes/personal), según evaluación del sitio |
+| `cargadores-micromovilidad.html` | Carga AC para patinetas, scooters y motos eléctricas. Estaciones multi-toma (2–20 tomas) sobre OCPP; **modelo anfitrión** (comisión por contrato) o **suministro del equipo** al operador. Cobro por la app por tiempo/sesión/energía. Segmentos: flotas de domicilios, universidades, conjuntos y comercios |
 | `soluciones-para-empresas.html` | Página comercial: 2 líneas para empresas/operadores (importación de hardware + instalación). Cruza a la página de software para la plataforma |
 | `software-para-electrolineras.html` | Página comercial: licenciamiento del software CPO en dos modelos (keyword principal "software para electrolineras"). Cada tarjeta lleva un badge de estado arriba: **licencia base → Disponible** (plan piloto; la plataforma ya está construida y probada) y **white-label → Próximamente**. En ambos el operador opera y recibe el dinero directo; AutoVolt no custodia |
 | `como-poner-cargadores-en-mi-conjunto.html` | Guía SEO (top-of-funnel) que enlaza a la página comercial de conjuntos |
@@ -49,7 +51,7 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 Dominio canónico: **`https://www.autovoltenergy.net`** (todas las `<link rel="canonical">`,
 `og:url` y el `sitemap.xml` apuntan ahí).
 
-- **Estrategia:** una página por intención de búsqueda (conjuntos residenciales, centros comerciales, hoteles y hospitales, empresas/operadores, software).
+- **Estrategia:** una página por intención de búsqueda (conjuntos residenciales, centros comerciales, hoteles y hospitales, micromovilidad, empresas/operadores, software).
 - **Datos estructurados (JSON-LD):** `Organization` + `WebSite` (home); `Service`,
   `BreadcrumbList` y `FAQPage` en las páginas comerciales; `BreadcrumbList` en
   `prefactibilidad.html`; `Article` + `BreadcrumbList` + `FAQPage` en la guía.
@@ -75,6 +77,13 @@ ante un comité de copropiedad, un centro comercial o una empresa.
   para residentes, sujeto a costos de energía y contrato. Foco 100% residencial, carga lenta AC de 7 kW.
 - **Hoteles y hospitales:** modelo anfitrión para sitios de alta rotación; AC de 7 kW (huéspedes)
   o DC desde 20 kW (visitantes/personal), según evaluación del sitio (flujo, plazas, capacidad eléctrica).
+- **Micromovilidad:** carga AC para patinetas, scooters y motos eléctricas con estaciones multi-toma
+  (2–20 tomas) sobre OCPP; **modelo anfitrión** (comisión por contrato) **o suministro del equipo** al
+  operador. La copia vende el **beneficio del socio** (fácil y económico de sumar, atrae usuarios, genera
+  ingreso), **no** la ventaja de costo interna de AutoVolt. Cobro por la app por tiempo, sesión o energía.
+  Es cross-sell natural de conjuntos, hoteles y centros comerciales. Candidatos de hardware evaluados
+  (sin contratar): NASN (10–20 tomas) y Zhongchongfu (2 canales 3,5 kW), pendientes del filtro de
+  certificación (ISO 9001 con alcance + informes de ensayo ≤9 meses).
 - **Centros comerciales:** se enmarca como modelo a comisión definida por contrato, con
   carga rápida (DC desde 20 kW) solo donde la capacidad y el flujo lo justifiquen.
 - **Empresas/operadores:** dos líneas (importación de hardware + instalación) sujetas a alcance,
@@ -131,7 +140,7 @@ Cada push a `main` republica el sitio automáticamente. No depende de `Operativo
 
 Completo: meta/canónicos únicos por página, **datos estructurados JSON-LD** en todas (home con
 `Organization`+`WebSite`; segmentos con `Service`/`BreadcrumbList`/`FAQPage`; guía con
-`Article`/`FAQPage`), `sitemap.xml` (10 páginas) enviado y `robots.txt` apuntando a él, y **Search
+`Article`/`FAQPage`), `sitemap.xml` (12 páginas) enviado y `robots.txt` apuntando a él, y **Search
 Console verificado** por archivo HTML (`google6258b155e64498e9.html`). Sin scripts de
 tracking/cookies por ahora. **Pendiente:** Perfil de Empresa de Google (negocio virtual/área de
 servicio, sin dirección visible).
@@ -147,7 +156,7 @@ servicio, sin dirección visible).
    aparecer en días (Maps + paquete local). Crear como negocio virtual/área de servicio,
    sin dirección visible, con sitio web y WhatsApp `+57 314 490 7237`.
 2. **Indexación en Search Console.** Reenviar `sitemap.xml` y usar *Inspección de URL →
-   Solicitar indexación* en las 10 páginas; verificar que queden **indexadas** (no solo
+   Solicitar indexación* en las 12 páginas; verificar que queden **indexadas** (no solo
    enviadas) en la pestaña *Páginas*.
 3. **Contenido long-tail.** Replicar el modelo de `como-poner-cargadores-en-mi-conjunto.html`
    con guías que respondan preguntas reales y poco competidas, p. ej.: cuánto cuesta instalar
