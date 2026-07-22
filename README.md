@@ -52,7 +52,8 @@ Dominio canónico: **`https://www.autovoltenergy.net`** (todas las `<link rel="c
 `og:url` y el `sitemap.xml` apuntan ahí).
 
 - **Estrategia:** una página por intención de búsqueda (conjuntos residenciales, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad, empresas/operadores, software).
-- **Datos estructurados (JSON-LD):** `Organization` + `WebSite` (home); `Service`,
+- **Datos estructurados (JSON-LD):** `Organization` + `WebSite` + `OfferCatalog` (home);
+  `sameAs` queda pendiente hasta crear redes oficiales; `Service`,
   `BreadcrumbList` y `FAQPage` en las páginas comerciales; `BreadcrumbList` en
   `prefactibilidad.html`; `Article` + `BreadcrumbList` + `FAQPage` en la guía.
 - **Conversión:** botón flotante de WhatsApp (`+57 314 490 7237`) en todas las páginas + CTA por WhatsApp/correo.
@@ -144,11 +145,11 @@ Cada push a `main` republica el sitio automáticamente. No depende de `Operativo
 ### SEO técnico
 
 Completo: meta/canónicos únicos por página, **datos estructurados JSON-LD** en todas (home con
-`Organization`+`WebSite`; segmentos con `Service`/`BreadcrumbList`/`FAQPage`; guía con
-`Article`/`FAQPage`), `sitemap.xml` (12 páginas) enviado y `robots.txt` apuntando a él, y **Search
+`Organization`+`WebSite`+`OfferCatalog`; segmentos con `Service`/`BreadcrumbList`/`FAQPage`; guía con
+`Article`/`FAQPage`), `sitemap.xml` publicado con 12 páginas y `robots.txt` apuntando a él, y **Search
 Console verificado** por archivo HTML (`google6258b155e64498e9.html`). Sin scripts de
 tracking/cookies por ahora. **Pendiente:** Perfil de Empresa de Google (negocio virtual/área de
-servicio, sin dirección visible).
+servicio, sin dirección visible) y `sameAs` cuando existan redes oficiales.
 
 ### Plan de visibilidad (captación orgánica)
 
@@ -163,13 +164,15 @@ servicio, sin dirección visible).
 2. **Indexación en Search Console.** Reenviar `sitemap.xml` y usar *Inspección de URL →
    Solicitar indexación* en las 12 páginas; verificar que queden **indexadas** (no solo
    enviadas) en la pestaña *Páginas*.
-3. **Contenido long-tail.** Replicar el modelo de `como-poner-cargadores-en-mi-conjunto.html`
+3. **Redes sociales oficiales + schema.** Crear Instagram, Facebook y LinkedIn de la empresa.
+   Cuando existan las URLs, agregarlas al `sameAs` del schema `Organization` del home.
+4. **Contenido long-tail.** Replicar el modelo de `como-poner-cargadores-en-mi-conjunto.html`
    con guías que respondan preguntas reales y poco competidas, p. ej.: cuánto cuesta instalar
    un cargador en un conjunto, permisos en propiedad horizontal, requisitos RETIE de cargadores,
    AC vs DC cuál elegir. Cada guía enlaza a su página comercial.
-4. **Backlinks / autoridad.** Conseguir menciones y enlaces desde directorios de movilidad
+5. **Backlinks / autoridad.** Conseguir menciones y enlaces desde directorios de movilidad
    eléctrica de Colombia, cámaras de comercio, asociaciones (p. ej. ANDEMOS), prensa local y aliados.
-5. **(Opcional, pago) Google Ads.** Para aparecer de inmediato por keywords objetivo mientras
+6. **(Opcional, pago) Google Ads.** Para aparecer de inmediato por keywords objetivo mientras
    el posicionamiento orgánico madura.
 
 > Mantener la decisión de **no instalar analítica/cookies** hasta aprobar privacidad y la capa
@@ -179,11 +182,12 @@ servicio, sin dirección visible).
 
 - **Cumplimiento:** revisar y cerrar `../PLAN-DE-AVANCE.md` antes de publicar la app,
   cobrar sesiones o instalar estaciones de acceso público.
-- **Placeholders legales:** `[NIT]`, `[DIRECCIÓN COMERCIAL]`, `[CIUDAD]` y `[FECHA DE VIGENCIA]`
-  siguen pendientes en `terminos.html` y `privacidad.html` hasta tener datos oficiales.
+- **Placeholders legales:** ✅ **reemplazados con datos reales del RUT (22 jul 2026)** en
+  `terminos.html` y `privacidad.html` — NIT `902.087.036-0`, domicilio Ibagué (Tolima),
+  fecha de vigencia 22 jul 2026. Falta hacer **commit + push** para que salgan en GitHub Pages.
 - **Visibilidad / captación:** ejecutar el **Plan de visibilidad (captación orgánica)** de arriba
-  (Perfil de Empresa de Google → indexación → contenido long-tail → backlinks). El Perfil de Empresa
-  de Google va sin dirección visible hasta tener sede o estación pública real.
+  (Perfil de Empresa de Google → indexación → redes/sameAs → contenido long-tail → backlinks).
+  El Perfil de Empresa de Google va sin dirección visible hasta tener sede o estación pública real.
 - **Analítica:** no instalar scripts de tracking/cookies por ahora. Usar Search Console primero;
   GA4/Meta Pixel/Hotjar/Plausible quedan para después de aprobar privacidad y aviso/capa de cookies si aplica.
 - **Badges de tiendas:** Google Play / App Store quedan como elementos visuales no clicables hasta publicar las apps.
