@@ -28,7 +28,7 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 
 | Archivo | Propósito |
 |---|---|
-| `index.html` | Landing principal (hub de soluciones **agrupado por intención**: *¿Tienes un espacio?* —conjuntos, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad—, *¿Quieres operar?* —empresas/hardware, software— y *¿Conduces?* —app conductores—; más sección de conductores y contacto) |
+| `index.html` | Landing principal, reestructurada **audiencia-primero** (jul 2026): hero enfocado al **modelo anfitrión** ("carga en tu propiedad, sin invertir") con un solo CTA (prefactibilidad) → **selector de 4 segmentos** (conjuntos, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad) → **cómo funciona** en 3 pasos → franja de **confianza** (S.A.S/RETIE/DIAN/OCPP) → **operadores** (software+hardware) y **conductores** (app) como **bandas secundarias** → contacto. Antes agrupaba 3 intenciones con el mismo peso (se sentía confuso). El software white-label se anuncia aquí como "en desarrollo". Domicilio del schema `Organization`: Ibagué/Tolima |
 | `cargadores-conjuntos-residenciales.html` | Modelo anfitrión sujeto a prefactibilidad: la copropiedad puede elegir participación de ingresos o tarifa preferencial. 100% residencial, carga lenta AC de 7 kW. Ofrece micromovilidad como opción complementaria (sección "Dos formas de cargar" + enlace cruzado) |
 | `cargadores-centros-comerciales.html` | Modelo anfitrión para **centros comerciales y parqueaderos** (públicos/privados y cadenas) y zonas de alta afluencia: espacio + conexión; comisión por contrato. Carga rápida DC desde 20 kW para carros **y** estación AC para micromovilidad en el mismo sitio. Cross-link con micromovilidad |
 | `cargadores-hoteles-hospitales.html` | Modelo anfitrión para hoteles y hospitales: AC 7 kW (huéspedes) o DC desde 20 kW (visitantes/personal), según evaluación del sitio |
@@ -36,6 +36,10 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 | `soluciones-para-empresas.html` | Página comercial: 2 líneas para empresas/operadores (importación de hardware + instalación). Cruza a la página de software para la plataforma |
 | `software-para-electrolineras.html` | Página comercial: licenciamiento del software CPO en dos modelos (keyword principal "software para electrolineras"). Cada tarjeta lleva un badge de estado arriba: **licencia base → Disponible** (plan piloto; la plataforma ya está construida y probada) y **white-label → Próximamente**. En ambos el operador opera y recibe el dinero directo; AutoVolt no custodia |
 | `como-poner-cargadores-en-mi-conjunto.html` | Guía SEO (top-of-funnel) que enlaza a la página comercial de conjuntos |
+| `propuesta-parqueaderos.html` | **Deck comercial** (propuesta por link) para parqueaderos públicos: modelos A + B + comparación. `noindex`, sin enlazar en nav/sitemap. Ver *Propuestas comerciales por segmento* |
+| `propuesta-conjuntos.html` | Deck comercial para conjuntos: solo Modelo A + micromovilidad. `noindex`, unlisted |
+| `propuesta-hoteles.html` | Deck comercial para hoteles: solo Modelo A, sin micromovilidad. `noindex`, unlisted |
+| `propuesta-centros-comerciales.html` | Deck comercial para centros comerciales: Modelo A + micromovilidad, con Modelo B anexado como opción. `noindex`, unlisted |
 | `terminos.html` | Términos y Condiciones |
 | `privacidad.html` | Política de Privacidad y Tratamiento de Datos |
 | `styles.css` | Hoja de estilos compartida |
@@ -110,6 +114,26 @@ ante un comité de copropiedad, un centro comercial o una empresa.
 Al editar estas páginas, mantener este criterio: preferir verbos como *evaluamos, cotizamos,
 proponemos* y condicionantes (*sujeto a, según contrato, cuando el flujo lo justifique*)
 en lugar de promesas absolutas o cifras cerradas.
+
+## Propuestas comerciales por segmento (decks)
+
+Además de las páginas de marketing, hay **decks comerciales interactivos** (una sola página HTML
+self-contained, navegación por slides con flechas/swipe, marca oscura azul+verde) que se **envían
+por link** a un cliente concreto. Son `noindex, nofollow`, **no** están enlazados en el menú ni en
+`sitemap.xml`, y viven en el mismo repo para servirse por GitHub Pages (`propuesta-*.html`):
+
+| Deck | Enfoque |
+|---|---|
+| `propuesta-parqueaderos.html` | Modelos **A + B** + tabla comparativa |
+| `propuesta-conjuntos.html` | Solo **A** + micromovilidad |
+| `propuesta-hoteles.html` | Solo **A**, sin micromovilidad |
+| `propuesta-centros-comerciales.html` | **A + micromovilidad**, con **B anexado como opción** |
+
+Reglas de contenido (alineadas con "promesas defendibles"): sin cifras de comisión fijas; carga
+**lenta <7 kW / rápida 11 kW+**; **Modelo A** = cero inversión + participación (o tarifa/amenidad);
+**Modelo B** = el cliente compra el equipo, AutoVolt instala **y opera**, el cliente maneja el dinero y
+recibe **+90%**, AutoVolt cobra comisión por operar. Las pantallas de la app en los decks son
+**mockups ilustrativos** (pendiente: capturas reales). Fuentes editables fuera del repo (scratchpad).
 
 ## Desarrollo local
 
@@ -190,4 +214,6 @@ servicio, sin dirección visible) y `sameAs` cuando existan redes oficiales.
   El Perfil de Empresa de Google va sin dirección visible hasta tener sede o estación pública real.
 - **Analítica:** no instalar scripts de tracking/cookies por ahora. Usar Search Console primero;
   GA4/Meta Pixel/Hotjar/Plausible quedan para después de aprobar privacidad y aviso/capa de cookies si aplica.
-- **Badges de tiendas:** Google Play / App Store quedan como elementos visuales no clicables hasta publicar las apps.
+- **Badges de tiendas:** en el home ahora dicen **"Disponible en"** Google Play / App Store, pero siguen
+  **no clicables** hasta cargar las URLs reales de cada tienda (pendiente: pasar los enlaces del Play Store
+  y App Store para volverlos `<a>`; si alguna app aún no es pública, revertir su badge a "Próximamente").
