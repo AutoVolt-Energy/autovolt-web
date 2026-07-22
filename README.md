@@ -182,9 +182,9 @@ servicio, sin dirección visible) y `sameAs` cuando existan redes oficiales.
 
 - **Cumplimiento:** revisar y cerrar `../PLAN-DE-AVANCE.md` antes de publicar la app,
   cobrar sesiones o instalar estaciones de acceso público.
-- **Placeholders legales:** ✅ **reemplazados con datos reales del RUT (22 jul 2026)** en
+- **Placeholders legales:** ✅ **reemplazados con datos reales del RUT y publicados (22 jul 2026)** en
   `terminos.html` y `privacidad.html` — NIT `902.087.036-0`, domicilio Ibagué (Tolima),
-  fecha de vigencia 22 jul 2026. Falta hacer **commit + push** para que salgan en GitHub Pages.
+  fecha de vigencia 22 jul 2026 (commit `f3a3e8c`, push a `main` → en vivo en GitHub Pages).
 - **Visibilidad / captación:** ejecutar el **Plan de visibilidad (captación orgánica)** de arriba
   (Perfil de Empresa de Google → indexación → redes/sameAs → contenido long-tail → backlinks).
   El Perfil de Empresa de Google va sin dirección visible hasta tener sede o estación pública real.
