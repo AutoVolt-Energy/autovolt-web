@@ -212,8 +212,8 @@ servicio, sin dirección visible) y `sameAs` cuando existan redes oficiales.
 - **Política de privacidad — auditoría legal (24 jul 2026):** `privacidad.html` reforzada con 6 cláusulas
   nuevas (transferencias internacionales, datos de diagnóstico, menores de edad, plazos habeas data,
   consentimiento por casilla, marketing separado) y nueva vigencia **24 jul 2026**. Cambio espejo del texto
-  en la app. ⏳ **Pendiente: re-push de `Web/` a `main`** para publicarla — la versión en vivo aún es la del
-  22 jul. Estado en `../Operativo/PLAN-DE-AVANCE.md` (sección Protección de Datos Personales).
+  en la app. ✅ **Publicada** (commit `5932073`, push a `main` → en vivo en GitHub Pages). Estado en
+  `../Operativo/PLAN-DE-AVANCE.md` (sección Protección de Datos Personales).
 - **Visibilidad / captación:** ejecutar el **Plan de visibilidad (captación orgánica)** de arriba
   (Perfil de Empresa de Google → indexación → redes/sameAs → contenido long-tail → backlinks).
   El Perfil de Empresa de Google va sin dirección visible hasta tener sede o estación pública real.
