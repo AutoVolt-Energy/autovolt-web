@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Volver a la app · AutoVolt Energy</title>
+  <meta name="description" content="Pantalla de retorno tras pagar una recarga de billetera AutoVolt Energy.">
+  <!-- Página transaccional: se llega a ella solo desde la pasarela de pago. -->
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="assets/mark.png">
+  <style>
+    :root {
+      --bg:#09090F; --bg-card:#101318; --bg-card-2:#161C24;
+      --green:#39E659; --green-dim:#2bb344; --blue:#4285F4;
+      --ink:#FFFFFF; --ink-2:#C2CCDA; --ink-3:#94A1B5; --border:#1E2D3D;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin:0; min-height:100vh; color:var(--ink); font-family:var(--sans);
+      -webkit-font-smoothing:antialiased; background:var(--bg);
+      background-image:
+        radial-gradient(900px 420px at 50% -10%, rgba(57,230,89,.10), transparent 60%),
+        radial-gradient(700px 380px at 50% 110%, rgba(66,133,244,.10), transparent 60%);
+      display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .card {
+      width:100%; max-width:440px; background:var(--bg-card);
+      border:1px solid var(--border); border-radius:20px; padding:34px 26px 28px;
+      text-align:center; box-shadow:0 24px 60px rgba(0,0,0,.45);
+    }
+    .logo { height:40px; margin:0 auto 22px; display:block; }
+    .icon {
+      width:72px; height:72px; margin:0 auto 20px; border-radius:22px;
+      background:rgba(57,230,89,.12); display:flex; align-items:center; justify-content:center;
+    }
+    h1 { font-size:23px; line-height:1.25; margin:0 0 10px; font-weight:800; }
+    .sub { color:var(--ink-2); font-size:15px; line-height:1.55; margin:0 0 22px; }
+    .sub b { color:var(--green); font-weight:600; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:9px;
+      width:100%; padding:15px 22px; border-radius:13px; border:0; cursor:pointer;
+      font-family:inherit; font-size:16px; font-weight:700; text-decoration:none;
+      background:linear-gradient(150deg,var(--green),var(--green-dim)); color:var(--bg);
+      transition:transform .16s ease, box-shadow .16s ease;
+    }
+    .btn:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(57,230,89,.32); }
+    .steps {
+      margin:22px 0 0; padding:16px 18px; background:var(--bg-card-2);
+      border:1px solid var(--border); border-radius:13px; text-align:left;
+    }
+    .steps p { margin:0 0 8px; color:var(--ink-2); font-size:13.5px; line-height:1.5; }
+    .steps p:last-child { margin-bottom:0; }
+    .steps b { color:var(--ink); }
+    .ref {
+      margin:18px 0 0; color:var(--ink-3); font-size:11.5px; line-height:1.5;
+      word-break:break-all;
+    }
+    .ref span { color:var(--ink-2); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .foot { margin:20px 0 0; color:var(--ink-3); font-size:12px; }
+    .foot a { color:var(--ink-2); }
+    @media (max-width:380px) { .card { padding:28px 20px 24px; } h1 { font-size:21px; } }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <!-- logo.png, no logo_4k.png: este último trae un fondo negro semiopaco (alfa
+         136) que se recorta como un rectángulo sobre la tarjeta. -->
+    <img class="logo" src="assets/logo.png" alt="AutoVolt Energy">
+
+    <div class="icon" aria-hidden="true">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <path d="M13 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h7M17 15l3-3-3-3M20 12H10"
+              stroke="#39E659" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1>Ya puedes volver a AutoVolt</h1>
+
+    <!-- Deliberadamente NO se afirma que el pago fue aprobado: la pasarela solo nos
+         devuelve el id de la transacción, no su estado. Prometer una aprobación aquí
+         le mentiría a quien le rebotó la tarjeta. Quien decide es el webhook. -->
+    <p class="sub">
+      Si tu pago fue aprobado, tu saldo se acredita <b>automáticamente</b> en unos
+      segundos. No tienes que enviarnos ningún comprobante.
+    </p>
+
+    <a class="btn" id="openApp" href="#">Abrir la app AutoVolt</a>
+
+    <div class="steps">
+      <p><b>¿No se abrió sola?</b> Cambia a la app AutoVolt desde tu pantalla de inicio.</p>
+      <p><b>¿No ves el saldo todavía?</b> Entra a <b>Billetera</b> y desliza hacia abajo para actualizar.</p>
+      <p><b>¿Tu pago fue rechazado?</b> No se te cobró nada. Puedes intentar de nuevo desde la app.</p>
+    </div>
+
+    <p class="ref" id="ref" hidden>Referencia de la transacción: <span id="refVal"></span></p>
+
+    <p class="foot">
+      ¿Algo no cuadra? Escríbenos a
+      <a href="mailto:gerencia@autovoltenergy.net">gerencia@autovoltenergy.net</a>
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      // Wompi devuelve ?id=<transaccion>&env=test|prod. Mostrar el id le da al
+      // conductor algo concreto que citar si tiene que escribirnos.
+      var params = new URLSearchParams(location.search);
+      var id = params.get('id');
+      if (id) {
+        document.getElementById('refVal').textContent = id;
+        document.getElementById('ref').hidden = false;
+      }
+
+      var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var btn = document.getElementById('openApp');
+
+      if (isIOS) {
+        // iOS no permite abrir una app por identificador desde el navegador sin un
+        // esquema propio o Universal Links (pendiente). El botón lleva a la ficha de
+        // la App Store, que sí abre la app si ya está instalada.
+        btn.href = 'https://apps.apple.com/co/app/id6795232669';
+      } else {
+        // Android: el intent explícito al LAUNCHER abre la app instalada sin
+        // necesidad de App Links. Es "mejor esfuerzo" —algunos navegadores piden
+        // confirmación— y si el paquete no está, cae en la ficha de Play.
+        btn.href =
+          'intent://#Intent;package=co.autovolt.app;action=android.intent.action.MAIN;' +
+          'category=android.intent.category.LAUNCHER;' +
+          'S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.autovolt.app;end';
+      }
+    })();
+  </script>
+</body>
+</html>
