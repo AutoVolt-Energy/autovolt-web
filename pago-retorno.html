@@ -29,11 +29,9 @@
       border:1px solid var(--border); border-radius:20px; padding:34px 26px 28px;
       text-align:center; box-shadow:0 24px 60px rgba(0,0,0,.45);
     }
-    .logo { height:40px; margin:0 auto 22px; display:block; }
-    .icon {
-      width:72px; height:72px; margin:0 auto 20px; border-radius:22px;
-      background:rgba(57,230,89,.12); display:flex; align-items:center; justify-content:center;
-    }
+    /* Sin icono decorativo: el logo hace de marca y de ancla visual a la vez.
+       Poner ambos competía por la misma atención y alargaba la tarjeta. */
+    .logo { height:68px; max-width:100%; margin:0 auto 26px; display:block; }
     h1 { font-size:23px; line-height:1.25; margin:0 0 10px; font-weight:800; }
     .sub { color:var(--ink-2); font-size:15px; line-height:1.55; margin:0 0 22px; }
     .sub b { color:var(--green); font-weight:600; }
@@ -67,13 +65,6 @@
     <!-- logo.png, no logo_4k.png: este último trae un fondo negro semiopaco (alfa
          136) que se recorta como un rectángulo sobre la tarjeta. -->
     <img class="logo" src="assets/logo.png" alt="AutoVolt Energy">
-
-    <div class="icon" aria-hidden="true">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-        <path d="M13 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h7M17 15l3-3-3-3M20 12H10"
-              stroke="#39E659" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
 
     <h1>Ya puedes volver a AutoVolt</h1>
 
