@@ -42,6 +42,7 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 | `propuesta-centros-comerciales.html` | Deck comercial para centros comerciales: Modelo A + micromovilidad, con Modelo B anexado como opción. `noindex`, unlisted |
 | `terminos.html` | Términos y Condiciones |
 | `privacidad.html` | Política de Privacidad y Tratamiento de Datos |
+| `pago-retorno.html` | **Pantalla de retorno de la pasarela de pago.** Destino de `WOMPI_REDIRECT_URL`: sin ella, Wompi deja al conductor en su propia pantalla de resultado, que habla de una transacción y no de AutoVolt. A propósito **no afirma que el pago fue aprobado** — la redirección solo trae el id, no el estado; prometer una aprobación le mentiría a quien le rebotó la tarjeta. El botón «Abrir la app» es mejor esfuerzo mientras no haya App Links (intent al LAUNCHER en Android, ficha de App Store en iOS). `noindex`, autónoma (estilos propios, sin `styles.css` ni nav). Esta misma URL será el App Link cuando se implemente el retorno automático |
 | `styles.css` | Hoja de estilos compartida |
 | `sitemap.xml` | Mapa del sitio para buscadores |
 | `robots.txt` | Directivas de rastreo + referencia al sitemap |
