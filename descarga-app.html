@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Descarga la app · AutoVolt Energy</title>
+  <meta name="description" content="Descarga la app de recarga de vehículos eléctricos AutoVolt Energy. Ya disponible en la App Store; en Android, prueba cerrada por invitación.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://www.autovoltenergy.net/descarga-app">
+  <style>
+    :root {
+      --bg:#09090F; --bg-card:#101318; --bg-card-2:#161C24;
+      --green:#39E659; --green-dim:#2bb344; --blue:#4285F4; --blue-deep:#1E56E8;
+      --amber:#FFB800; --ink:#FFFFFF; --ink-2:#C2CCDA; --ink-3:#94A1B5; --border:#1E2D3D;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin:0; color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased;
+      background:
+        radial-gradient(1100px 560px at 82% -6%, rgba(66,133,244,0.12), transparent 60%),
+        radial-gradient(900px 640px at -10% 108%, rgba(57,230,89,0.09), transparent 55%),
+        var(--bg);
+      padding:30px 18px 60px; display:flex; justify-content:center;
+    }
+    .wrap { width:100%; max-width:560px; }
+    .brand { display:flex; align-items:center; gap:12px; margin-bottom:26px; }
+    .brand .bolt { width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:11px;
+      background:linear-gradient(145deg,var(--blue),var(--blue-deep)); box-shadow:0 0 22px -4px rgba(66,133,244,0.7); }
+    .brand .bolt svg { width:22px; height:22px; }
+    .brand .name { font-weight:800; font-size:18px; letter-spacing:-0.01em; }
+    .brand .name span { color:var(--green); }
+    .hero { background:linear-gradient(180deg,rgba(66,133,244,0.10),rgba(57,230,89,0.05));
+      border:1px solid var(--border); border-radius:22px; padding:30px 26px; margin-bottom:22px; }
+    .kicker { display:inline-block; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+      color:var(--green); font-weight:700; border:1px solid rgba(57,230,89,0.35); border-radius:999px;
+      padding:5px 12px; margin-bottom:16px; }
+    h1 { margin:0 0 10px; font-weight:850; font-size:clamp(28px,7vw,38px); line-height:1.05;
+      letter-spacing:-0.03em; text-wrap:balance; }
+    h1 .hl { color:var(--green); }
+    .hero p { margin:0; color:var(--ink-2); font-size:15.5px; line-height:1.55; }
+    .req { display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 0; }
+    .req span { font-size:12.5px; color:var(--ink-2); background:var(--bg-card-2); border:1px solid var(--border);
+      border-radius:10px; padding:8px 12px; display:inline-flex; align-items:center; gap:7px; }
+    .req svg { width:15px; height:15px; }
+    .steps { display:flex; flex-direction:column; gap:14px; }
+    .step { display:grid; grid-template-columns:46px 1fr; gap:15px; align-items:start;
+      background:var(--bg-card); border:1px solid var(--border); border-radius:18px; padding:18px; }
+    .num { width:46px; height:46px; border-radius:13px; display:grid; place-items:center;
+      font-weight:850; font-size:20px; color:var(--bg);
+      background:linear-gradient(150deg,var(--green),var(--green-dim)); box-shadow:0 0 18px -6px rgba(57,230,89,0.8); }
+    .step h2 { margin:3px 0 5px; font-size:17.5px; font-weight:750; letter-spacing:-0.01em; }
+    .step p { margin:0 0 13px; color:var(--ink-2); font-size:14px; line-height:1.5; }
+    .step p:last-child { margin-bottom:0; }
+    b.g { color:var(--green); } b.b { color:var(--blue); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; width:100%;
+      text-decoration:none; text-align:center; font-weight:750; font-size:15px; letter-spacing:-0.01em;
+      padding:14px 18px; border-radius:13px; border:none; cursor:pointer; }
+    .btn svg { width:19px; height:19px; }
+    .btn.secondary { background:var(--bg-card-2); color:var(--ink); border:1px solid var(--blue); }
+    .btn.play { background:#fff; color:#0b0b12; }
+    .altlink { display:block; text-align:center; margin-top:10px; font-size:13px; color:var(--ink-3); text-decoration:none; }
+    .altlink a { color:var(--green); font-weight:700; text-decoration:none; }
+    .note { margin-top:24px; display:flex; gap:13px; align-items:flex-start;
+      background:rgba(255,184,0,0.07); border:1px solid rgba(255,184,0,0.30); border-radius:15px; padding:15px 17px; }
+    .note svg { flex:none; width:22px; height:22px; margin-top:1px; }
+    .note p { margin:0; color:var(--ink-2); font-size:13.5px; line-height:1.5; }
+    .note b { color:var(--amber); }
+    .help { margin-top:22px; text-align:center; color:var(--ink-3); font-size:13px; line-height:1.55; }
+    .help a { color:var(--green); font-weight:700; text-decoration:none; }
+    .legal { margin-top:18px; text-align:center; color:var(--ink-3); font-size:11.5px; line-height:1.5; }
+    .legal b { color:var(--ink-2); }
+    .tabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:2px 0 18px;
+      background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:6px; }
+    .tab { display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 10px;
+      border:none; border-radius:10px; cursor:pointer; background:transparent; color:var(--ink-3);
+      font-family:inherit; font-weight:750; font-size:14.5px; letter-spacing:-0.01em; transition:background .15s, color .15s; }
+    .tab svg { width:17px; height:17px; }
+    .tab.android[aria-selected="true"] { background:linear-gradient(150deg,var(--green),var(--green-dim)); color:var(--bg); }
+    .tab.ios[aria-selected="true"] { background:linear-gradient(150deg,var(--blue),var(--blue-deep)); color:#fff; }
+    .panel { display:none; }
+    .panel.active { display:block; }
+    .num.blue { background:linear-gradient(150deg,var(--blue),var(--blue-deep)); box-shadow:0 0 18px -6px rgba(66,133,244,0.8); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <span class="bolt"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="#fff"/></svg></span>
+      <span class="name">AutoVolt <span>Energy</span></span>
+    </div>
+
+    <div class="hero">
+      <span class="kicker">Recarga tu vehículo eléctrico</span>
+      <h1>Descarga <span class="hl">AutoVolt Energy</span></h1>
+      <p>Encuentra cargadores, inicia y sigue tu carga desde el celular, y paga sin efectivo. Elige tu sistema:</p>
+      <div class="req">
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#39E659" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Gratis</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4 10-10" stroke="#39E659" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Android o iPhone</span>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab android" role="tab" aria-selected="true" data-plat="android" type="button"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9M9 17v3M15 17v3M8 9V7a4 4 0 0 1 8 0v2M2 11v3M22 11v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Android</button>
+      <button class="tab ios" role="tab" aria-selected="false" data-plat="ios" type="button"><svg viewBox="0 0 24 24" fill="none"><path d="M16.5 3c.1 1.2-.4 2.3-1.1 3.1-.8.8-1.9 1.4-3 1.3-.1-1.1.4-2.3 1.1-3C14.3 3.6 15.5 3.1 16.5 3ZM19 17c-.5 1.2-.8 1.7-1.5 2.7-.9 1.4-2.3 3.1-3.9 3.1-1.5 0-1.8-1-3.8-1-1.9 0-2.3 1-3.8 1-1.6 0-2.8-1.6-3.8-2.9-2.5-3.4-2.8-8.1-.4-10.6 1-1.2 2.5-1.9 3.9-1.9 1.5 0 2.4 1 3.7 1 1.2 0 1.9-1 3.7-1 1.2 0 2.6.7 3.5 1.8-3.1 1.7-2.6 6.2.7 7.7Z" fill="currentColor"/></svg>iPhone</button>
+    </div>
+
+    <div class="panel active" data-plat="android">
+    <p style="color:var(--ink-3);font-size:13.5px;line-height:1.5;margin:0 0 14px;">En Android estamos en <b style="color:var(--ink-2)">prueba cerrada</b>. Para darte acceso es rápido y personal:</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h2>Escríbenos por WhatsApp</h2>
+          <p>Mándanos el <b class="g">correo Gmail</b> que usas en tu teléfono Android. Con ese correo te habilitamos como verificador.</p>
+          <a class="btn" style="background:#25D366;color:#0b2b17;" href="https://wa.me/573144907237?text=Hola%2C%20quiero%20probar%20la%20app%20AutoVolt%20Energy%20en%20Android.%20Mi%20correo%20Gmail%20es%3A%20" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.2-5.2A8.5 8.5 0 1 1 21 11.5Z" stroke="#0b2b17" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h2>Te agregamos y te enviamos el enlace</h2>
+          <p>En minutos te habilitamos como verificador y te mandamos por WhatsApp el <b>enlace para instalar</b>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h2>Instala y regístrate</h2>
+          <p>Abre el enlace que te enviamos, descárgala en <b>Google Play</b>, regístrate y ¡listo para cargar!</p>
+          <span class="altlink">Google puede tardar unos minutos en habilitar la descarga tras agregarte.</span>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="panel" data-plat="ios">
+    <p style="color:var(--ink-3);font-size:13.5px;line-height:1.5;margin:0 0 14px;">En iPhone ya está <b style="color:var(--green)">pública en la App Store</b> — solo descárgala:</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num blue">1</div>
+        <div>
+          <h2>Descárgala en la App Store</h2>
+          <p><b class="b">¡Ya disponible!</b> Toca el botón, instala <b>AutoVolt Energy</b> y ábrela.</p>
+          <a class="btn" style="background:linear-gradient(150deg,var(--blue),var(--blue-deep));color:#fff;" href="https://apps.apple.com/co/app/autovolt-energy/id6795232669" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M16.5 3c.1 1.2-.4 2.3-1.1 3.1-.8.8-1.9 1.4-3 1.3-.1-1.1.4-2.3 1.1-3C14.3 3.6 15.5 3.1 16.5 3ZM19 17c-.5 1.2-.8 1.7-1.5 2.7-.9 1.4-2.3 3.1-3.9 3.1-1.5 0-1.8-1-3.8-1-1.9 0-2.3 1-3.8 1-1.6 0-2.8-1.6-3.8-2.9-2.5-3.4-2.8-8.1-.4-10.6 1-1.2 2.5-1.9 3.9-1.9 1.5 0 2.4 1 3.7 1 1.2 0 1.9-1 3.7-1 1.2 0 2.6.7 3.5 1.8-3.1 1.7-2.6 6.2.7 7.7Z" fill="#fff"/></svg>
+            Descargar en la App Store
+          </a>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num blue">2</div>
+        <div>
+          <h2>Regístrate y ¡listo para cargar!</h2>
+          <p>Crea tu cuenta con tu correo, Google o Apple y empieza a cargar.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="note">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FFB800" stroke-width="1.8"/><path d="M12 8v5" stroke="#FFB800" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#FFB800"/></svg>
+      <p><b>iPhone:</b> ya está pública en la App Store — descárgala directo. <b>Android:</b> escríbenos con el <b>mismo correo Gmail</b> de tu teléfono; te habilitamos y te pasamos el enlace. Google puede tardar unos minutos en habilitar la descarga tras agregarte.</p>
+    </div>
+
+    <div class="help">
+      ¿Problemas para instalar? Escríbenos por WhatsApp al <a href="https://wa.me/573144907237?text=Hola%2C%20necesito%20ayuda%20para%20instalar%20la%20app%20AutoVolt%20Energy" target="_blank" rel="noopener">+57 314 490 7237</a>
+    </div>
+
+    <div class="legal">
+      <b>AutoVolt Energy S.A.S</b> · NIT 902.087.036-0 · www.autovoltenergy.net
+    </div>
+  </div>
+  <script>
+    (function () {
+      var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var tabs = document.querySelectorAll('.tab');
+      var panels = document.querySelectorAll('.panel');
+      function show(plat) {
+        tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.plat === plat)); });
+        panels.forEach(function (p) { p.classList.toggle('active', p.dataset.plat === plat); });
+      }
+      tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.plat); }); });
+      show(isIOS ? 'ios' : 'android');
+    })();
+  </script>
+</body>
+</html>
