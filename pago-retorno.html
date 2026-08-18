@@ -76,10 +76,10 @@
       segundos. No tienes que enviarnos ningún comprobante.
     </p>
 
-    <a class="btn" id="openApp" href="#">Abrir la app AutoVolt</a>
+    <a class="btn" id="openApp" href="#">Descargar la app AutoVolt</a>
 
     <div class="steps">
-      <p><b>¿No se abrió sola?</b> Cambia a la app AutoVolt desde tu pantalla de inicio.</p>
+      <p><b>¿Ya tienes la app?</b> Vuelve a ella desde tu pantalla de inicio; tu saldo ya está ahí.</p>
       <p><b>¿No ves el saldo todavía?</b> Entra a <b>Billetera</b> y desliza hacia abajo para actualizar.</p>
       <p><b>¿Tu pago fue rechazado?</b> No se te cobró nada. Puedes intentar de nuevo desde la app.</p>
     </div>
@@ -107,20 +107,18 @@
                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       var btn = document.getElementById('openApp');
 
-      if (isIOS) {
-        // iOS no permite abrir una app por identificador desde el navegador sin un
-        // esquema propio o Universal Links (pendiente). El botón lleva a la ficha de
-        // la App Store, que sí abre la app si ya está instalada.
-        btn.href = 'https://apps.apple.com/co/app/id6795232669';
-      } else {
-        // Android: el intent explícito al LAUNCHER abre la app instalada sin
-        // necesidad de App Links. Es "mejor esfuerzo" —algunos navegadores piden
-        // confirmación— y si el paquete no está, cae en la ficha de Play.
-        btn.href =
-          'intent://#Intent;package=co.autovolt.app;action=android.intent.action.MAIN;' +
-          'category=android.intent.category.LAUNCHER;' +
-          'S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.autovolt.app;end';
-      }
+      // El botón lleva a la TIENDA, no intenta abrir la app.
+      //
+      // Antes probaba un `intent://` al LAUNCHER, y no podía funcionar: Chrome se
+      // niega a lanzar una actividad que no declare `BROWSABLE`, y la de AutoVolt
+      // no lo hacía. Prometía algo que nunca cumplió.
+      //
+      // Desde los App Links, quien llega a esta página es justamente quien NO tiene
+      // la app instalada (o cuyo dominio aún no se verificó): a los demás el sistema
+      // les abre la app directo y nunca ven esto. Así que lo útil aquí es la tienda.
+      btn.href = isIOS
+        ? 'https://apps.apple.com/co/app/id6795232669'
+        : 'https://play.google.com/store/apps/details?id=co.autovolt.app';
     })();
   </script>
 </body>
