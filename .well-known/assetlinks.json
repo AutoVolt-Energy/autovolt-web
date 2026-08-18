@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "co.autovolt.app",
+      "sha256_cert_fingerprints": [
+        "94:13:28:70:4D:86:31:EC:3C:05:88:17:09:67:A6:F4:13:E7:ED:8F:15:95:17:9F:9A:9F:C4:E0:2C:E3:E2:34",
+        "9A:51:19:31:C5:55:8B:EE:D7:E2:7C:69:87:FF:DF:38:AA:59:34:DF:95:45:22:3B:E7:7C:0A:7A:C1:9F:A3:BD"
+      ]
+    }
+  }
+]
