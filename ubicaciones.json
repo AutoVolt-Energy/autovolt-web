@@ -1,5 +1,24 @@
 {
-  "_comentario": "Generado por Operativo/scripts/exportar-ubicaciones.mjs desde el dashboard. Los campos tipo/acceso/estado/nota se editan a mano aqui y el script los conserva.",
+  "_comentario": "Generado por Operativo/scripts/exportar-ubicaciones.mjs desde el dashboard. No editar a mano: se sobrescribe. Los datos se cambian en el dashboard, en Cargadores → Ubicaciones → Editar.",
   "actualizado": "2026-08-23",
-  "ubicaciones": []
+  "ubicaciones": [
+    {
+      "nombre": "Conjunto Residencial Aquapark - Casa i1",
+      "ciudad": "Girardot",
+      "lat": 4.316,
+      "lng": -74.816,
+      "tipo": "conjunto",
+      "acceso": "residentes",
+      "estado": "en-instalacion",
+      "cargadores": [
+        {
+          "nombre": "Conjunto Residencial Aquapark - Casa i1",
+          "corriente": "AC",
+          "potenciaKw": 7,
+          "conector": "Type2",
+          "conectores": 1
+        }
+      ]
+    }
+  ]
 }
