@@ -142,12 +142,16 @@ recibe **+90%**, AutoVolt cobra comisión por operar. Las pantallas de la app en
 
 ## Mapa de ubicaciones (`donde-estamos.html`)
 
-La página se alimenta de **`ubicaciones.json`**, un archivo del repo. **No consulta el
-backend en vivo**: el sitio es estático y un mapa en tiempo real exigiría un endpoint
-público sin autenticación, que está pospuesto en el
-[plan de avance](../Operativo/PLAN-DE-AVANCE.md) hasta que haya red instalada.
+La página se alimenta de **`ubicaciones.json`**, un archivo generado. **No consulta el backend
+en vivo**, y no va a hacerlo: el mapa en tiempo real en la web quedó **descartado por decisión
+de negocio** (23 ago 2026, ver el [plan de avance](../Operativo/PLAN-DE-AVANCE.md)). El estado
+en vivo de cada cargador vive en la **app**, que es donde el conductor lo necesita; la web
+muestra la foto que el operador aprueba en el dashboard.
 
-La fuente de verdad sigue siendo el **dashboard**. El puente es un exportador:
+Los datos se capturan en el **dashboard** (Cargadores → Ubicaciones → Editar), incluido el
+interruptor **«Mostrar en el mapa público»**, que nace apagado. El puente es un exportador que
+normalmente dispara el workflow **Publicar mapa de ubicaciones** desde la pestaña Actions del
+repo privado; a mano se corre así:
 
 ```powershell
 # PowerShell (Windows) — desde la raíz del workspace
