@@ -3,8 +3,8 @@
 Sitio web oficial (landing público) de **AutoVolt Energy**. Presenta la propuesta
 para **conductores** (app), **conjuntos residenciales**, **hoteles y hospitales**,
 **centros comerciales y parqueaderos**, **micromovilidad** (patinetas, scooters y motos eléctricas),
-**empresas/operadores** (importación e instalación de hardware)
-y **operadores que licencian el software** (dos modelos: licencia base y white-label), y aloja las páginas legales.
+**empresas y operadores** que licencian el software (dos modelos: licencia base y white-label),
+y aloja las páginas legales.
 
 Es un sitio **100% estático**: HTML + CSS, sin framework ni paso de build.
 Dentro del workspace vive en `Web/` y se despliega de forma independiente de la
@@ -28,12 +28,12 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 
 | Archivo | Propósito |
 |---|---|
-| `index.html` | Landing principal, reestructurada **audiencia-primero** (jul 2026): hero enfocado al **modelo anfitrión** ("carga en tu propiedad, sin invertir") con un solo CTA (prefactibilidad) → **selector de 4 segmentos** (conjuntos, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad) → **cómo funciona** en 3 pasos → franja de **confianza** (S.A.S/RETIE/DIAN/OCPP) → **operadores** (software+hardware) y **conductores** (app) como **bandas secundarias** → contacto. Antes agrupaba 3 intenciones con el mismo peso (se sentía confuso). El software white-label se anuncia aquí como "en desarrollo". Domicilio del schema `Organization`: Ibagué/Tolima |
+| `index.html` | Landing principal, reestructurada **audiencia-primero** (jul 2026): hero enfocado al **modelo anfitrión** ("carga en tu propiedad, sin invertir") con un solo CTA (prefactibilidad) → **selector de 4 segmentos** (conjuntos, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad) → franja de **confianza** (S.A.S/RETIE/DIAN/OCPP) → **operadores** (software) y **conductores** (app) como **bandas secundarias** → contacto. La sección "cómo funciona" en 3 pasos se retiró en ago 2026. Antes agrupaba 3 intenciones con el mismo peso (se sentía confuso). El software white-label se anuncia aquí como "en desarrollo". Domicilio del schema `Organization`: Ibagué/Tolima |
 | `cargadores-conjuntos-residenciales.html` | Modelo anfitrión sujeto a prefactibilidad: la copropiedad puede elegir participación de ingresos o tarifa preferencial. 100% residencial, carga lenta AC de 7 kW. Ofrece micromovilidad como opción complementaria (sección "Dos formas de cargar" + enlace cruzado) |
 | `cargadores-centros-comerciales.html` | Modelo anfitrión para **centros comerciales y parqueaderos** (públicos/privados y cadenas) y zonas de alta afluencia: espacio + conexión; comisión por contrato. Carga rápida DC desde 20 kW para carros **y** estación AC para micromovilidad en el mismo sitio. Cross-link con micromovilidad |
 | `cargadores-hoteles-hospitales.html` | Modelo anfitrión para hoteles y hospitales: AC 7 kW (huéspedes) o DC desde 20 kW (visitantes/personal), según evaluación del sitio |
 | `cargadores-micromovilidad.html` | Carga AC para patinetas, scooters y motos eléctricas. Estaciones multi-toma (2–20 tomas) sobre OCPP; **modelo anfitrión** (comisión por contrato) o **suministro del equipo** al operador. Cobro por la app por tiempo/sesión/energía. Segmentos: flotas de domicilios, universidades, conjuntos y comercios |
-| `soluciones-para-empresas.html` | Página comercial: 2 líneas para empresas/operadores (importación de hardware + instalación). Cruza a la página de software para la plataforma |
+| `soluciones-para-empresas.html` | Página comercial de **entrada por audiencia** (empresas y operadores) al licenciamiento de la plataforma CPO: licencia base (disponible) y white-label (próximamente). Cruza a `software-para-electrolineras.html` para el detalle técnico. Hasta ago 2026 vendía importación e instalación de hardware; esa línea se retiró del sitio |
 | `software-para-electrolineras.html` | Página comercial: licenciamiento del software CPO en dos modelos (keyword principal "software para electrolineras"). Cada tarjeta lleva un badge de estado arriba: **licencia base → Disponible** (plan piloto; la plataforma ya está construida y probada) y **white-label → Próximamente**. En ambos el operador opera y recibe el dinero directo; AutoVolt no custodia |
 | `como-poner-cargadores-en-mi-conjunto.html` | Guía SEO (top-of-funnel) que enlaza a la página comercial de conjuntos |
 | `propuesta-parqueaderos.html` | **Deck comercial** (propuesta por link) para parqueaderos públicos: modelos A + B + comparación. `noindex`, sin enlazar en nav/sitemap. Ver *Propuestas comerciales por segmento* |
@@ -97,8 +97,11 @@ ante un comité de copropiedad, un centro comercial o una empresa.
   de domicilio, scooters, patinetas) en el mismo sitio. Se decidió **fusionar parqueaderos aquí** (en vez
   de página propia) por el alto solapamiento de modelo/pitch/keywords; la página de parqueaderos aparte
   nunca se desplegó. Cross-link con micromovilidad.
-- **Empresas/operadores:** dos líneas (importación de hardware + instalación) sujetas a alcance,
-  permisos y compatibilidad (p. ej. OCPP 1.6-J). La plataforma se ofrece aparte, en la página de software.
+- **Empresas/operadores:** entrada por audiencia al licenciamiento de la plataforma, sujeta a alcance
+  y compatibilidad (p. ej. OCPP 1.6-J). El detalle del producto vive en la página de software.
+  **La importación e instalación de hardware ya no se publicita en el sitio** (ago 2026): se retiró
+  de esta página, del inicio, de la de software, de `llms.txt` y de los 4 decks. Se conservan el
+  modelo anfitrión (AutoVolt instala y opera) y la opción de que el aliado compre el equipo.
 - **Software (operadores):** se ofrece en **dos modelos de licenciamiento**: **licencia base** (el
   operador opera con la app y la marca de AutoVolt o una genérica; se cobra por **comisión** sobre la
   operación) y **licencia white-label** (opera con su propia marca, app, tarifas, conductores y pasarela;
