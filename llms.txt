@@ -15,6 +15,7 @@ AutoVolt Energy S.A.S es una empresa colombiana con sede en Ibagué, Tolima, y c
 - [Empresas y operadores](https://www.autovoltenergy.net/soluciones-para-empresas.html): modelos de licencia de la plataforma CPO (licencia base y white-label) para operar una red de carga propia.
 
 ## Para conductores
+- [Dónde estamos](https://www.autovoltenergy.net/donde-estamos.html): mapa de los puntos de carga que AutoVolt opera en Colombia, con tipo de sitio, potencia y conectores. El estado en vivo de cada cargador se consulta en la app, no en el sitio web.
 - App para encontrar cargadores, iniciar carga con un escaneo y pagar desde la billetera.
 
 ## Acción

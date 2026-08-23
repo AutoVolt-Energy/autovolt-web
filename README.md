@@ -29,6 +29,7 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 | Archivo | Propósito |
 |---|---|
 | `index.html` | Landing principal, reestructurada **audiencia-primero** (jul 2026): hero enfocado al **modelo anfitrión** ("carga en tu propiedad, sin invertir") con un solo CTA (prefactibilidad) → **selector de 4 segmentos** (conjuntos, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad) → franja de **confianza** (S.A.S/RETIE/DIAN/OCPP) → **operadores** (software) y **conductores** (app) como **bandas secundarias** → contacto. La sección "cómo funciona" en 3 pasos se retiró en ago 2026. Antes agrupaba 3 intenciones con el mismo peso (se sentía confuso). El software white-label se anuncia aquí como "en desarrollo". Domicilio del schema `Organization`: Ibagué/Tolima |
+| `donde-estamos.html` | **Mapa público de la red** (ago 2026): Leaflet + tiles de OpenStreetMap sobre `ubicaciones.json`. Muestra ubicación, tipo de sitio, acceso, potencia y conectores — **nunca estado en vivo, sesiones ni conductores**. La lista de tarjetas se renderiza siempre (es el contenido indexable); el mapa es un extra que degrada sin romper. Con la red vacía muestra un CTA a prefactibilidad en vez de un mapa desierto |
 | `cargadores-conjuntos-residenciales.html` | Modelo anfitrión sujeto a prefactibilidad: la copropiedad puede elegir participación de ingresos o tarifa preferencial. 100% residencial, carga lenta AC de 7 kW. Ofrece micromovilidad como opción complementaria (sección "Dos formas de cargar" + enlace cruzado) |
 | `cargadores-centros-comerciales.html` | Modelo anfitrión para **centros comerciales y parqueaderos** (públicos/privados y cadenas) y zonas de alta afluencia: espacio + conexión; comisión por contrato. Carga rápida DC desde 20 kW para carros **y** estación AC para micromovilidad en el mismo sitio. Cross-link con micromovilidad |
 | `cargadores-hoteles-hospitales.html` | Modelo anfitrión para hoteles y hospitales: AC 7 kW (huéspedes) o DC desde 20 kW (visitantes/personal), según evaluación del sitio |
@@ -138,6 +139,44 @@ Reglas de contenido (alineadas con "promesas defendibles"): sin cifras de comisi
 **Modelo B** = el cliente compra el equipo, AutoVolt instala **y opera**, el cliente maneja el dinero y
 recibe **+90%**, AutoVolt cobra comisión por operar. Las pantallas de la app en los decks son
 **mockups ilustrativos** (pendiente: capturas reales). Fuentes editables fuera del repo (scratchpad).
+
+## Mapa de ubicaciones (`donde-estamos.html`)
+
+La página se alimenta de **`ubicaciones.json`**, un archivo del repo. **No consulta el
+backend en vivo**: el sitio es estático y un mapa en tiempo real exigiría un endpoint
+público sin autenticación, que está pospuesto en el
+[plan de avance](../Operativo/PLAN-DE-AVANCE.md) hasta que haya red instalada.
+
+La fuente de verdad sigue siendo el **dashboard**. El puente es un exportador:
+
+```bash
+# desde la raíz del workspace
+AUTOVOLT_ADMIN_EMAIL=... AUTOVOLT_ADMIN_PASSWORD=... \
+  node Operativo/scripts/exportar-ubicaciones.mjs           # --dry-run para revisar antes
+cd Web && git add ubicaciones.json && git commit && git push origin main
+```
+
+El script se autentica contra `api.autovoltenergy.net`, lee `GET /api/locations` y
+**filtra con lista blanca**: publica nombre, ciudad, coordenadas, potencia y conectores.
+Nunca tarifas, `chargePointId`, configuración OCPP ni datos de conductores.
+
+Cuatro reglas que no hay que romper:
+
+- **Campos editoriales a mano.** `tipo`, `acceso`, `estado` y `nota` no existen en la base
+  de datos: se escriben en el JSON. El exportador los **conserva** entre corridas
+  emparejando por nombre de ubicación, así que volver a exportar no borra la curaduría.
+- **Precisión según acceso.** Los sitios que no son `acceso: "publico"` se publican con
+  coordenada redondeada a 3 decimales (~100 m). Un conjunto residencial en el mapa con
+  precisión de portería es un dato sobre la propiedad del aliado, no sobre nosotros.
+- **Sin estado en vivo.** El estado (`operativo`/`en-instalacion`/`proximamente`) es
+  editorial y estable, no el `ChargerStatus` del momento. Publicar disponibilidad en
+  tiempo real permite inferir cuándo un sitio privado está vacío. Eso vive en la app.
+- **Pedir permiso al aliado** antes de publicar su punto, sobre todo si es residencial.
+
+Leaflet está **vendorizado** en `assets/vendor/leaflet/` (v1.9.4) en vez de cargarse por
+CDN: sin dependencia de terceros en runtime. Los marcadores son `divIcon` con CSS, así que
+no hacen falta las imágenes de marcador de Leaflet. La atribución de OpenStreetMap es
+obligatoria por licencia (ODbL) y ya está puesta — no quitarla.
 
 ## Desarrollo local
 

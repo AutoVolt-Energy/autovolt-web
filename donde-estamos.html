@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dónde estamos | Puntos de carga de AutoVolt Energy en Colombia</title>
+  <meta name="description" content="Mapa de los puntos de carga para vehículos eléctricos y micromovilidad operados por AutoVolt Energy en Colombia: ubicación, tipo de sitio, potencia y conectores disponibles." />
+  <meta name="keywords" content="puntos de carga Colombia, mapa de cargadores vehículos eléctricos, estaciones de carga AutoVolt, electrolineras Colombia, dónde cargar mi carro eléctrico" />
+  <link rel="canonical" href="https://www.autovoltenergy.net/donde-estamos.html" />
+
+  <meta property="og:title" content="Dónde estamos — puntos de carga de AutoVolt Energy" />
+  <meta property="og:description" content="Mapa de los puntos de carga que AutoVolt Energy opera en Colombia, con tipo de sitio, potencia y conectores." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.autovoltenergy.net/donde-estamos.html" />
+  <meta property="og:image" content="https://www.autovoltenergy.net/assets/logo_4k.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/png" href="assets/mark.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css" />
+  <script defer src="main.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.autovoltenergy.net/" },
+      { "@type": "ListItem", "position": 2, "name": "Dónde estamos", "item": "https://www.autovoltenergy.net/donde-estamos.html" }
+    ]
+  }
+  </script>
+
+  <style>
+    /* El mapa es lo unico de esta pagina que no cubre styles.css */
+    .mapa-wrap{
+      position:relative; margin-top:28px; border-radius:18px; overflow:hidden;
+      border:1px solid var(--border, rgba(255,255,255,.1));
+      background:var(--surface, #0e1420);
+    }
+    #mapa{ height:clamp(320px, 52vh, 560px); width:100%; background:#0e1420; }
+    /* Los tiles de OSM son claros; se invierten para que no quemen la vista
+       en un sitio oscuro. Es solo presentacion: la atribucion queda intacta. */
+    .mapa-wrap .leaflet-tile-pane{ filter:invert(1) hue-rotate(180deg) brightness(.92) contrast(.95) saturate(.75); }
+    .leaflet-container{ font:inherit; background:#0e1420; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip{ background:#131b2a; color:#e9eef8; }
+    .leaflet-popup-content{ margin:12px 14px; font-size:14px; line-height:1.5; }
+    .leaflet-popup-content b{ display:block; margin-bottom:2px; font-size:15px; }
+    .leaflet-control-attribution{ background:rgba(10,14,22,.82)!important; color:#8ea0bd!important; }
+    .leaflet-control-attribution a{ color:#9fb6ff!important; }
+
+    .pin{
+      display:grid; place-items:center; width:30px; height:30px; border-radius:50%;
+      background:#1b6cff; color:#fff; font-size:15px; font-weight:700;
+      border:2px solid rgba(255,255,255,.9); box-shadow:0 4px 14px rgba(0,0,0,.45);
+    }
+    .pin--operativo{ background:#16a34a; }
+    .pin--en-instalacion{ background:#f59e0b; color:#1a1305; }
+    .pin--proximamente{ background:#64748b; }
+
+    .sitios{ display:grid; gap:18px; margin-top:34px; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); }
+    .sitio{ padding:22px; border-radius:16px; border:1px solid var(--border, rgba(255,255,255,.1)); background:var(--surface, rgba(255,255,255,.03)); }
+    .sitio h3{ margin:10px 0 4px; font-size:19px; }
+    .sitio__ciudad{ color:var(--text-secondary, #9fb0c9); font-size:14px; }
+    .sitio__chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .sitio__chips span{ font-size:12.5px; padding:5px 10px; border-radius:999px; border:1px solid var(--border, rgba(255,255,255,.12)); color:var(--text-secondary, #9fb0c9); }
+    .estado{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; padding:5px 11px; border-radius:999px; }
+    .estado::before{ content:''; width:7px; height:7px; border-radius:50%; background:currentColor; }
+    .estado--operativo{ color:#4ade80; background:rgba(22,163,74,.14); }
+    .estado--en-instalacion{ color:#fbbf24; background:rgba(245,158,11,.14); }
+    .estado--proximamente{ color:#94a3b8; background:rgba(100,116,139,.16); }
+
+    .vacio{ text-align:center; padding:44px 22px; border-radius:16px; border:1px dashed var(--border, rgba(255,255,255,.16)); margin-top:30px; }
+    .vacio h3{ font-size:22px; margin-bottom:10px; }
+    .vacio p{ color:var(--text-secondary, #9fb0c9); max-width:560px; margin:0 auto 22px; }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="nav">
+    <a href="index.html" class="nav__brand">
+      <img src="assets/logo.png" alt="AutoVolt Energy" />
+    </a>
+    <nav class="nav__links">
+      <div class="nav__dropdown">
+        <button type="button" class="nav__dropbtn" aria-haspopup="true">Soluciones <span class="caret">▾</span></button>
+        <div class="nav__menu">
+          <a href="cargadores-conjuntos-residenciales.html">Conjuntos residenciales</a>
+          <a href="cargadores-centros-comerciales.html">Centros comerciales y parqueaderos</a>
+          <a href="cargadores-hoteles-hospitales.html">Hoteles y hospitales</a>
+          <a href="cargadores-micromovilidad.html">Micromovilidad</a>
+          <a href="soluciones-para-empresas.html">Empresas y operadores</a>
+          <a href="software-para-electrolineras.html">Software para electrolineras</a>
+        </div>
+      </div>
+      <a href="donde-estamos.html">Dónde estamos</a>
+      <a href="index.html#app">Conductores</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a href="prefactibilidad.html" class="btn btn--primary nav__cta">Solicitar evaluación</a>
+    <button type="button" class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main id="contenido">
+    <section class="section">
+      <div class="section__head reveal">
+        <span class="eyebrow">⚡ Red AutoVolt · Colombia</span>
+        <h2>Dónde estamos</h2>
+        <p>Los puntos de carga que operamos, con su tipo de sitio, potencia y conectores. La red crece con cada aliado que suma su espacio.</p>
+      </div>
+
+      <div class="mapa-wrap reveal">
+        <div id="mapa" role="application" aria-label="Mapa de los puntos de carga de AutoVolt Energy"></div>
+      </div>
+
+      <!-- La lista es el contenido real: se renderiza siempre, aunque el mapa no cargue. -->
+      <div id="sitios" class="sitios"></div>
+
+      <div id="vacio" class="vacio" hidden>
+        <h3>Estamos energizando los primeros puntos</h3>
+        <p>Todavía no hay estaciones abiertas al público. Si tienes un parqueadero, un conjunto o un hotel, tu sitio puede ser uno de los primeros —sin que pongas capital.</p>
+        <a href="prefactibilidad.html" class="btn btn--primary btn--lg">Solicita tu prefactibilidad gratis</a>
+      </div>
+
+      <p class="download__note" style="text-align:center;margin-top:26px;">
+        ¿Buscas cargar hoy? La <a href="descarga-app.html">app de AutoVolt</a> te muestra el estado en vivo de cada cargador y te deja iniciar la sesión desde el mapa.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <img src="assets/logo.png" alt="AutoVolt Energy" class="footer__logo" />
+      <p class="footer__tag">Potencia para cada kilómetro.</p>
+      <nav class="footer__links">
+        <a href="index.html#contacto">Contacto</a>
+        <a href="terminos.html">Términos</a>
+        <a href="privacidad.html">Privacidad</a>
+      </nav>
+      <p class="footer__copy">© <span id="year"></span> AutoVolt Energy S.A.S. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <a class="wa-fab" href="https://wa.me/573144907237?text=Hola%2C%20quiero%20saber%20d%C3%B3nde%20hay%20cargadores%20de%20AutoVolt" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.515 5.26l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+
+  <script defer src="assets/vendor/leaflet/leaflet.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function () {
+      var ETIQUETA_ESTADO = {
+        'operativo': 'Operativo',
+        'en-instalacion': 'En instalación',
+        'proximamente': 'Próximamente'
+      };
+      var ETIQUETA_TIPO = {
+        'conjunto': 'Conjunto residencial',
+        'centro-comercial': 'Centro comercial',
+        'hotel': 'Hotel',
+        'hospital': 'Hospital',
+        'parqueadero': 'Parqueadero',
+        'micromovilidad': 'Micromovilidad',
+        'otro': 'Punto de carga'
+      };
+      var ETIQUETA_ACCESO = {
+        'publico': 'Abierto al público',
+        'clientes': 'Solo clientes del sitio',
+        'residentes': 'Solo residentes'
+      };
+
+      function texto(v) { return String(v == null ? '' : v); }
+
+      function tarjeta(u) {
+        var el = document.createElement('article');
+        el.className = 'sitio reveal';
+
+        var estado = ETIQUETA_ESTADO[u.estado] || 'Próximamente';
+        var chips = [];
+        if (ETIQUETA_TIPO[u.tipo]) chips.push(ETIQUETA_TIPO[u.tipo]);
+        if (ETIQUETA_ACCESO[u.acceso]) chips.push(ETIQUETA_ACCESO[u.acceso]);
+        (u.cargadores || []).forEach(function (c) {
+          var p = c.potenciaKw ? c.potenciaKw + ' kW' : '';
+          chips.push([c.corriente, p].filter(Boolean).join(' ') + (c.conectores > 1 ? ' · ' + c.conectores + ' conectores' : ''));
+        });
+
+        var h = '<span class="estado estado--' + texto(u.estado) + '">' + estado + '</span>';
+        h += '<h3></h3><p class="sitio__ciudad"></p>';
+        if (u.nota) h += '<p class="sitio__ciudad" style="margin-top:10px"></p>';
+        h += '<div class="sitio__chips"></div>';
+        el.innerHTML = h;
+
+        // Contenido por textContent: el JSON lo edita una persona, no se inyecta como HTML.
+        el.querySelector('h3').textContent = texto(u.nombre);
+        el.querySelectorAll('.sitio__ciudad')[0].textContent = texto(u.ciudad);
+        if (u.nota) el.querySelectorAll('.sitio__ciudad')[1].textContent = texto(u.nota);
+        var cont = el.querySelector('.sitio__chips');
+        chips.forEach(function (c) {
+          var s = document.createElement('span');
+          s.textContent = c;
+          cont.appendChild(s);
+        });
+        return el;
+      }
+
+      function pintarMapa(ubicaciones) {
+        if (typeof L === 'undefined' || !ubicaciones.length) return;
+        var mapa = L.map('mapa', { scrollWheelZoom: false });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '&copy; colaboradores de <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(mapa);
+
+        var puntos = [];
+        ubicaciones.forEach(function (u) {
+          if (typeof u.lat !== 'number' || typeof u.lng !== 'number') return;
+          var icono = L.divIcon({
+            className: '',
+            html: '<div class="pin pin--' + texto(u.estado) + '">⚡</div>',
+            iconSize: [30, 30],
+            iconAnchor: [15, 15]
+          });
+          var popup = document.createElement('div');
+          var b = document.createElement('b');
+          b.textContent = texto(u.nombre);
+          var p = document.createElement('span');
+          p.textContent = texto(u.ciudad) + ' · ' + (ETIQUETA_ESTADO[u.estado] || '');
+          popup.appendChild(b);
+          popup.appendChild(p);
+          L.marker([u.lat, u.lng], { icon: icono, title: u.nombre }).addTo(mapa).bindPopup(popup);
+          puntos.push([u.lat, u.lng]);
+        });
+
+        if (puntos.length === 1) mapa.setView(puntos[0], 14);
+        else mapa.fitBounds(puntos, { padding: [50, 50], maxZoom: 13 });
+      }
+
+      fetch('ubicaciones.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (data) {
+          var ubicaciones = (data && data.ubicaciones) || [];
+          var lista = document.getElementById('sitios');
+          var vacio = document.getElementById('vacio');
+
+          if (!ubicaciones.length) {
+            vacio.hidden = false;
+            document.querySelector('.mapa-wrap').hidden = true;
+            return;
+          }
+          var nuevas = ubicaciones.map(function (u) {
+            var el = tarjeta(u);
+            lista.appendChild(el);
+            return el;
+          });
+          // main.js recoge los `.reveal` una sola vez al cargar, asi que las
+          // tarjetas creadas aqui nunca reciben `is-visible` y se quedarian
+          // invisibles. Se revelan a mano en el siguiente frame para que igual
+          // corra la transicion.
+          requestAnimationFrame(function () {
+            nuevas.forEach(function (el, i) {
+              el.style.transitionDelay = (i * 0.06) + 's';
+              el.classList.add('is-visible');
+            });
+          });
+          pintarMapa(ubicaciones);
+        })
+        .catch(function () {
+          document.getElementById('vacio').hidden = false;
+          document.querySelector('.mapa-wrap').hidden = true;
+        });
+    })();
+  </script>
+</body>
+</html>
