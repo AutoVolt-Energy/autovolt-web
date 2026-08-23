@@ -142,16 +142,25 @@ recibe **+90%**, AutoVolt cobra comisión por operar. Las pantallas de la app en
 
 ## Mapa de ubicaciones (`donde-estamos.html`)
 
-La página se alimenta de **`ubicaciones.json`**, un archivo generado. **No consulta el backend
-en vivo**, y no va a hacerlo: el mapa en tiempo real en la web quedó **descartado por decisión
-de negocio** (23 ago 2026, ver el [plan de avance](../Operativo/PLAN-DE-AVANCE.md)). El estado
-en vivo de cada cargador vive en la **app**, que es donde el conductor lo necesita; la web
-muestra la foto que el operador aprueba en el dashboard.
+La página se alimenta de **`ubicaciones.json`**, un **artefacto generado**: no se edita a mano,
+se sobrescribe. **No consulta el backend en vivo**, y no va a hacerlo: el mapa en tiempo real en
+la web quedó **descartado por decisión de negocio** (23 ago 2026, ver el
+[plan de avance](../Operativo/PLAN-DE-AVANCE.md)). El estado en vivo de cada cargador vive en la
+**app**, que es donde el conductor lo necesita; la web muestra la foto que el operador aprueba.
 
-Los datos se capturan en el **dashboard** (Cargadores → Ubicaciones → Editar), incluido el
-interruptor **«Mostrar en el mapa público»**, que nace apagado. El puente es un exportador que
-normalmente dispara el workflow **Publicar mapa de ubicaciones** desde la pestaña Actions del
-repo privado; a mano se corre así:
+### Cómo se publica
+
+1. En el **dashboard**: *Cargadores → Ubicaciones → Editar*. Ahí está el interruptor
+   **«Mostrar en el mapa público»** y, al encenderlo, la clase de sitio, quién puede entrar, el
+   estado de cara al público y una nota opcional.
+2. En **GitHub → Actions → «Publicar mapa de ubicaciones» → Run workflow** (repo privado). Tiene
+   una casilla *solo revisar* que muestra qué saldría sin publicar nada.
+3. El workflow escribe `ubicaciones.json` en este repo y GitHub Pages redespliega solo.
+
+El workflow vive en el repo privado porque las credenciales de administrador no pueden estar en
+secrets de un repo público. Escribe aquí, así que **no dispara el deploy de Hetzner**.
+
+A mano, si hiciera falta:
 
 ```powershell
 # PowerShell (Windows) — desde la raíz del workspace
@@ -169,22 +178,36 @@ AUTOVOLT_ADMIN_EMAIL=... AUTOVOLT_ADMIN_PASSWORD=... \
 cd Web && git add ubicaciones.json && git commit && git push origin main
 ```
 
-El script se autentica contra `api.autovoltenergy.net`, lee `GET /api/locations` y
-**filtra con lista blanca**: publica nombre, ciudad, coordenadas, potencia y conectores.
-Nunca tarifas, `chargePointId`, configuración OCPP ni datos de conductores.
+El script se autentica contra `api.autovoltenergy.net`, lee `GET /api/locations` y **filtra con
+lista blanca**: publica nombre, ciudad, coordenadas, potencia, tipo de conector y número de
+conectores. Nunca tarifas, `chargePointId`, configuración OCPP, estado en vivo ni datos de
+conductores.
 
-Cuatro reglas que no hay que romper:
+### Cinco reglas que no hay que romper
 
-- **Campos editoriales a mano.** `tipo`, `acceso`, `estado` y `nota` no existen en la base
-  de datos: se escriben en el JSON. El exportador los **conserva** entre corridas
-  emparejando por nombre de ubicación, así que volver a exportar no borra la curaduría.
+- **El dashboard es la única fuente.** `tipo`, `acceso`, `estado` y `nota` viven en la tabla
+  `Location` desde la `1.37.0`. Editar el JSON a mano no sirve: la siguiente corrida lo pisa.
+- **Nada se publica solo.** `showOnPublicMap` nace **apagado**. Es lo que permite que la
+  publicación sea automática sin que un sitio nuevo salga a internet antes de tiempo.
 - **Precisión según acceso.** Los sitios que no son `acceso: "publico"` se publican con
   coordenada redondeada a 3 decimales (~100 m). Un conjunto residencial en el mapa con
   precisión de portería es un dato sobre la propiedad del aliado, no sobre nosotros.
-- **Sin estado en vivo.** El estado (`operativo`/`en-instalacion`/`proximamente`) es
-  editorial y estable, no el `ChargerStatus` del momento. Publicar disponibilidad en
-  tiempo real permite inferir cuándo un sitio privado está vacío. Eso vive en la app.
+- **Sin estado en vivo.** El estado (`operativo`/`en-instalacion`/`proximamente`) es editorial
+  y estable, no el `ChargerStatus` del momento. Publicar disponibilidad en tiempo real permite
+  inferir cuándo un sitio privado está vacío. Eso vive en la app.
 - **Pedir permiso al aliado** antes de publicar su punto, sobre todo si es residencial.
+
+### De dónde sale cada dato del cargador
+
+Dos criterios que deben seguir igual a los del resto del sistema; si allá cambian, aquí también:
+
+- **Potencia:** manda la de la **pistola** (`ConnectorState.powerKw`) y el techo del equipo
+  (`Charger.maxPowerKw`) es el respaldo — el mismo orden que usa la app en
+  `charger_detail_screen.dart`. Son datos distintos: el del equipo lo reparte el balanceador
+  entre sesiones.
+- **AC o DC:** lo decide el **tipo de conector** (CCS2, CHAdeMO, CCS1, GBT son DC), con la misma
+  lista que `charger.query.controller.ts`. **No se deduce de la potencia:** hasta la `1.37.2` se
+  asumía que ≥20 kW era DC, y con esa regla un DC lento de 15 kW se publicaba como AC.
 
 Leaflet está **vendorizado** en `assets/vendor/leaflet/` (v1.9.4) en vez de cargarse por
 CDN: sin dependencia de terceros en runtime. Los marcadores son `divIcon` con CSS, así que
