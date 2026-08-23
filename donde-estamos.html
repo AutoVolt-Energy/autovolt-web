@@ -190,7 +190,11 @@
         if (ETIQUETA_ACCESO[u.acceso]) chips.push(ETIQUETA_ACCESO[u.acceso]);
         (u.cargadores || []).forEach(function (c) {
           var p = c.potenciaKw ? c.potenciaKw + ' kW' : '';
-          chips.push([c.corriente, p].filter(Boolean).join(' ') + (c.conectores > 1 ? ' · ' + c.conectores + ' conectores' : ''));
+          // El tipo de conector decide si el carro del visitante encaja, asi que
+          // va en la etiqueta cuando el operador lo tiene registrado.
+          var partes = [c.corriente, p].filter(Boolean).join(' ');
+          if (c.conector) partes = c.conector + ' · ' + partes;
+          chips.push(partes + (c.conectores > 1 ? ' · ' + c.conectores + ' conectores' : ''));
         });
 
         var h = '<span class="estado estado--' + texto(u.estado) + '">' + estado + '</span>';
