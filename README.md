@@ -149,8 +149,17 @@ público sin autenticación, que está pospuesto en el
 
 La fuente de verdad sigue siendo el **dashboard**. El puente es un exportador:
 
+```powershell
+# PowerShell (Windows) — desde la raíz del workspace
+$env:AUTOVOLT_ADMIN_EMAIL = 'gerencia@autovoltenergy.net'
+$env:AUTOVOLT_ADMIN_PASSWORD = '...'
+node Operativo/scripts/exportar-ubicaciones.mjs --dry-run   # revisa sin escribir
+node Operativo/scripts/exportar-ubicaciones.mjs             # escribe Web/ubicaciones.json
+cd Web; git add ubicaciones.json; git commit -m "chore: actualiza el mapa de ubicaciones"; git push origin main
+```
+
 ```bash
-# desde la raíz del workspace
+# bash / Git Bash
 AUTOVOLT_ADMIN_EMAIL=... AUTOVOLT_ADMIN_PASSWORD=... \
   node Operativo/scripts/exportar-ubicaciones.mjs           # --dry-run para revisar antes
 cd Web && git add ubicaciones.json && git commit && git push origin main
