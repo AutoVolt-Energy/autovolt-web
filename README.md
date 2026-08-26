@@ -28,14 +28,14 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 
 | Archivo | Propósito |
 |---|---|
-| `index.html` | Landing principal, reestructurada **audiencia-primero** (jul 2026): hero enfocado al **modelo anfitrión** ("carga en tu propiedad, sin invertir") con un solo CTA (prefactibilidad) → **selector de 4 segmentos** (conjuntos, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad) → franja de **confianza** (S.A.S/RETIE/DIAN/OCPP) → **operadores** (software) y **conductores** (app) como **bandas secundarias** → contacto. La sección "cómo funciona" en 3 pasos se retiró en ago 2026. Antes agrupaba 3 intenciones con el mismo peso (se sentía confuso). El software white-label se anuncia aquí como "en desarrollo". Domicilio del schema `Organization`: Ibagué/Tolima |
-| `donde-estamos.html` | **Mapa público de la red** (ago 2026): Leaflet + tiles de OpenStreetMap sobre `ubicaciones.json`. Muestra ubicación, tipo de sitio, acceso, potencia y conectores — **nunca estado en vivo, sesiones ni conductores**. La lista de tarjetas se renderiza siempre (es el contenido indexable); el mapa es un extra que degrada sin romper. Con la red vacía muestra un CTA a prefactibilidad en vez de un mapa desierto |
+| `index.html` | Landing principal, reestructurada **audiencia-primero** (jul 2026): hero enfocado al **modelo anfitrión** ("carga en tu propiedad, sin invertir") con un solo CTA (prefactibilidad) → **selector de 4 segmentos** (conjuntos, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad) → franja de **confianza** (S.A.S/RETIE/DIAN/OCPP) → **operadores** (software) y **conductores** (app) como **bandas secundarias** → contacto. La sección "cómo funciona" en 3 pasos se retiró en ago 2026. Antes agrupaba 3 intenciones con el mismo peso (se sentía confuso). El software white-label se anuncia aquí como "en desarrollo". Domicilio del schema `Organization`: Ibagué/Tolima **Ago 2026:** el `<title>` vendía *software para electrolineras* mientras el H1 promete *carga sin invertir* — dos promesas en la misma pantalla, y además canibalizaba la keyword de `software-para-electrolineras.html`. Ahora title/description/OG hablan del **modelo anfitrión**; la keyword de software vive solo en su página. La franja de sellos (S.A.S/OCPP/DIAN/RETIE) aparecía **dos veces** (hero y sección "Hecho para cumplir", con una sola sección de por medio): se quedó únicamente en la sección de confianza, porque el hero debe ser promesa + acción, no credenciales. Se quitó el botón secundario "Ver soluciones", que solo hacía scroll a la sección de abajo y le restaba peso al CTA. |
+| `donde-estamos.html` | **Mapa público de la red** (ago 2026): Leaflet + tiles de OpenStreetMap sobre `ubicaciones.json`. Muestra ubicación, tipo de sitio, acceso, potencia y conectores — **nunca estado en vivo, sesiones ni conductores**. La lista de tarjetas se renderiza siempre (es el contenido indexable); el mapa es un extra que degrada sin romper. Con la red vacía muestra un CTA a prefactibilidad en vez de un mapa desierto Era la única página del sitio **sin `<h1>`** (arrancaba en `<h2>`); corregido en ago 2026 — `.section__head h1` comparte estilo con `h2`, así que se ve igual. |
 | `cargadores-conjuntos-residenciales.html` | Modelo anfitrión sujeto a prefactibilidad: la copropiedad puede elegir participación de ingresos o tarifa preferencial. 100% residencial, carga lenta AC de 7 kW. Ofrece micromovilidad como opción complementaria (sección "Dos formas de cargar" + enlace cruzado) |
 | `cargadores-centros-comerciales.html` | Modelo anfitrión para **centros comerciales y parqueaderos** (públicos/privados y cadenas) y zonas de alta afluencia: espacio + conexión; comisión por contrato. Carga rápida DC desde 20 kW para carros **y** estación AC para micromovilidad en el mismo sitio. Cross-link con micromovilidad |
 | `cargadores-hoteles-hospitales.html` | Modelo anfitrión para hoteles y hospitales: AC 7 kW (huéspedes) o DC desde 20 kW (visitantes/personal), según evaluación del sitio |
 | `cargadores-micromovilidad.html` | Carga AC para patinetas, scooters y motos eléctricas. Estaciones multi-toma (2–20 tomas) sobre OCPP; **modelo anfitrión** (comisión por contrato) o **suministro del equipo** al operador. Cobro por la app por tiempo/sesión/energía. Segmentos: flotas de domicilios, universidades, conjuntos y comercios |
-| `soluciones-para-empresas.html` | Página comercial de **entrada por audiencia** (empresas y operadores) al licenciamiento de la plataforma CPO: licencia base (disponible) y white-label (próximamente). Cruza a `software-para-electrolineras.html` para el detalle técnico. Hasta ago 2026 vendía importación e instalación de hardware; esa línea se retiró del sitio |
-| `software-para-electrolineras.html` | Página comercial: licenciamiento del software CPO en dos modelos (keyword principal "software para electrolineras"). Cada tarjeta lleva un badge de estado arriba: **licencia base → Disponible** (plan piloto; la plataforma ya está construida y probada) y **white-label → Próximamente**. En ambos el operador opera y recibe el dinero directo; AutoVolt no custodia |
+| `soluciones-para-empresas.html` | **Redirección** (ago 2026) a `software-para-electrolineras.html`. Era una segunda página para la misma audiencia (empresas/operadores) con los mismos dos modelos de licencia, la misma FAQ y el mismo CTA — y se enlazaban entre sí. Se fusionó en la página de software, que ya cubría todo su contenido. Se conserva el archivo como redirección `noindex, follow` + `canonical` porque GitHub Pages no permite 301 y la URL ya estaba indexada. **No volver a crear una página de audiencia aparte para operadores.** Hasta ago 2026 vendía importación e instalación de hardware; esa línea se retiró del sitio |
+| `software-para-electrolineras.html` | Página comercial: licenciamiento del software CPO en dos modelos (keyword principal "software para electrolineras"). Cada tarjeta lleva un badge de estado arriba: **licencia base → Disponible** (plan piloto; la plataforma ya está construida y probada) y **white-label → Próximamente**. En ambos el operador opera y recibe el dinero directo; AutoVolt no custodia **Ago 2026 — sección `#plataforma` "Qué trae la plataforma":** 11 tarjetas de características reales del software, cada una con badge de estado (`.badge-estado--ok` / `.badge-estado--pedido`). Reglas de contenido acordadas: **no se nombra la pasarela** (se dice "integramos la que tú uses", respaldado por el adaptador genérico de `ocpp-backend/src/services/payment/`), **no se menciona micromovilidad** en esta página, y **reserva de cargador va incluida** (verificado en código: `ChargerReservation`, `services/reservations/`, endpoints en `charger.routes.ts` — el PLAN la describe como "diseñada", pero está construida). **Ninguna tarjeta lleva estado pendiente:** la de `Tu marca y tu app` se retiró de esta sección porque el white-label ya se ofrece abajo, en *Elige el modelo* — no se duplica una oferta en la misma página. Por eso el subtítulo tampoco promete marcas de "todavía no". La nota al pie aclara que la pasarela concreta se define en la cotización Se **retiró la sección "Operar un CPO no es solo instalar cargadores"** (6 tarjetas de problemas): con `#plataforma` en su lugar la página pasa del hero directo a lo que el software hace, en vez de dedicar una pantalla a explicar el problema. También quitaba presión sobre una promesa aún no cerrada (facturación DIAN) También se retiró **"De cero a operando en 3 pasos"** (sección `#como`): el botón del hero que apuntaba ahí ahora lleva a `#plataforma` con el texto "Ver qué incluye". La promesa de acompañamiento en el onboarding sobrevive en la tarjeta *Empieza con la Licencia base*. Al quitar ambas secciones quedaban **tres `section--alt` seguidas**, así que "Elige el modelo" volvió a `section` para restaurar la alternancia de fondos **Los dos rieles de recarga NO van como tarjetas separadas:** "Tu pasarela, tu cuenta" y "Recarga por transferencia" se leían como lo mismo (al operador no le cambia nada cuál riel usó el conductor) y ninguna vendía el punto real. Fundidas en **"Tu plata no pasa por nosotros"**, que es el argumento diferenciador: el recaudo entra directo a su cuenta, sin liquidaciones ni custodia de por medio. El hueco lo ocupa **"Soporte que no te consume el día"** (asistente guiado + escalación con contexto + analítica), que responde al miedo de que operar signifique vivir contestando llamadas La tarifa de ocupación se titula **"Penalización por ocupación del cargador"** (decisión del fundador: nombre directo y reconocible en el sector, sobre alternativas de beneficio como "La pistola se libera sola"). Ya no se llama "Cobro por ocupación con gracia": "gracia" es jerga interna. **El cuerpo sí vende la rotación** —que el punto se libere y entre el siguiente cliente—, porque ahí está el valor real; el recargo es la palanca. Regla general para estas tarjetas: **el cuerpo nombra la situación que el operador ya sufre antes que la función del software** El white-label se marca **`Bajo pedido`**, no *Próximamente* (decisión del fundador): no está en estantería pero se construye cuando un cliente lo contrata — vende mejor y sigue siendo cierto. La clase es `.badge-estado--pedido` |
 | `como-poner-cargadores-en-mi-conjunto.html` | Guía SEO (top-of-funnel) que enlaza a la página comercial de conjuntos |
 | `propuesta-parqueaderos.html` | **Deck comercial** (propuesta por link) para parqueaderos públicos: modelos A + B + comparación. `noindex`, sin enlazar en nav/sitemap. Ver *Propuestas comerciales por segmento* |
 | `propuesta-conjuntos.html` | Deck comercial para conjuntos: solo Modelo A + micromovilidad. `noindex`, unlisted |
@@ -52,12 +52,60 @@ Producción: **https://www.autovoltenergy.net** (GitHub Pages)
 | `.nojekyll` | Desactiva el procesamiento Jekyll de GitHub Pages |
 | `assets/` | Logo (transparente y 4K) e isotipo (favicon) |
 
+## Navegación
+
+El menú es **idéntico en todas las páginas** con `styles.css` (se genera desde un solo bloque; si
+cambia, cambia en todas). Reestructurado en ago 2026 porque mezclaba los dos negocios y repetía
+destinos: el desplegable "Soluciones" juntaba los 4 segmentos de sitio con las 2 páginas de software,
+y además existían "Operadores" (ancla) y "Empresas y operadores" (página) apuntando a lo mismo.
+
+```
+Cargadores ▾ | Software CPO | Dónde estamos | App | Contacto | [Evaluación gratis]
+   └ Conjuntos residenciales / Centros comerciales y parqueaderos / Hoteles y hospitales / Micromovilidad
+```
+
+- **Dos caminos, no seis:** `Cargadores` = modelo anfitrión (nosotros ponemos y operamos);
+  `Software CPO` = licenciamiento (el cliente opera). Nada más entra al menú.
+- **Un solo CTA en todo el sitio:** "Evaluación gratis" → `prefactibilidad.html`. Antes cambiaba de
+  nombre por página ("Solicitar evaluación" / "Avísame" / "Solicitar cotización"), lo que hacía parecer
+  que eran acciones distintas. El CTA del hero de la home usa el mismo nombre. Los CTA **contextuales**
+  (p. ej. "Quiero cotizar" en `#cotizar` de software) viven dentro del contenido, no en el menú.
+  Solo existen dos redacciones, a propósito: `Evaluación gratis` (botón compacto del menú) y
+  `Solicita tu evaluación gratis` (botón grande dentro del contenido). Misma acción, misma palabra clave.
+- **Etiquetas cortas a propósito:** con textos largos ("Cargadores en tu sitio", "App para conductores")
+  el nav se parte en dos líneas y el CTA se solapa con "Contacto" a 1440 px — `--maxw` es 1140 px.
+  `.nav__links > a, .nav__dropbtn, .nav__cta` llevan `white-space: nowrap`.
+- **Página activa:** `is-active` en el enlace y también en `.nav__dropbtn` cuando el activo está
+  dentro del desplegable. La guía SEO de conjuntos marca activo "Conjuntos residenciales".
+- `descarga-app.html` y `pago-retorno.html` son landings autónomas (estilos propios, sin este nav).
+
+## Encabezados y clases compartidas
+
+Auditado en ago 2026: **toda página con encabezados tiene exactamente un `<h1>` y ningún salto de
+nivel** (nunca H1→H3). Vale la pena re-correr la comprobación al añadir páginas.
+
+- `donde-estamos.html` saltaba de H1 a H3: el mensaje de red vacía y **el título de cada punto de
+  carga, que lo genera el JS**, eran `<h3>` sin ningún H2 de por medio. Ambos pasaron a `<h2>`
+  (con su CSS inline y el `querySelector` del JS ajustados). Si se toca ese render, mantener `h2`.
+- Los 4 decks `propuesta-*.html` traían **dos `<h1>`**: la portada y la slide de contacto. La de
+  contacto es `<h2 class="slide-title">`, y esa clase le devuelve el tamaño del h1 — **el diseño no
+  cambió**, solo la semántica. Son `noindex`, así que era deuda de accesibilidad, no de SEO.
+- `google6258b155e64498e9.html` no lleva `<h1>` **a propósito**: es el archivo de verificación de
+  Search Console, una sola línea de texto.
+
+> **Cuidado con `.estado`:** `donde-estamos.html` la usa en su `<style>` propio para los chips de
+> los puntos de carga (`--operativo`, `--en-instalacion`, `--proximamente`). Los badges de
+> características de `software-para-electrolineras.html` se llaman **`.badge-estado`** justamente
+> para no chocar: `styles.css` carga **antes** que el `<style>` de la página, así que una `.estado`
+> global le filtra a esos chips todo lo que su regla local no redefina (pasó con `text-transform`
+> y `letter-spacing`). No declarar `.estado` en `styles.css`.
+
 ## SEO y captación
 
 Dominio canónico: **`https://www.autovoltenergy.net`** (todas las `<link rel="canonical">`,
 `og:url` y el `sitemap.xml` apuntan ahí).
 
-- **Estrategia:** una página por intención de búsqueda (conjuntos residenciales, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad, empresas/operadores, software).
+- **Estrategia:** una página por intención de búsqueda (conjuntos residenciales, centros comerciales y parqueaderos, hoteles y hospitales, micromovilidad, software para operadores). **Una intención, una página:** cuando dos páginas compiten por la misma audiencia se fusionan y la perdedora queda como redirección (ver `soluciones-para-empresas.html`).
 - **Datos estructurados (JSON-LD):** `Organization` + `WebSite` + `OfferCatalog` (home);
   `sameAs` queda pendiente hasta crear redes oficiales; `Service`,
   `BreadcrumbList` y `FAQPage` en las páginas comerciales; `BreadcrumbList` en
