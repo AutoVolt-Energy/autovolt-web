@@ -1,6 +1,6 @@
 {
   "_comentario": "Generado por Operativo/scripts/exportar-ubicaciones.mjs desde el dashboard. No editar a mano: se sobrescribe. Los datos se cambian en el dashboard, en Cargadores → Ubicaciones → Editar.",
-  "actualizado": "2026-08-23",
+  "actualizado": "2026-09-07",
   "ubicaciones": [
     {
       "nombre": "Conjunto Residencial Aquapark - Casa i1",
@@ -9,7 +9,7 @@
       "lng": -74.816,
       "tipo": "conjunto",
       "acceso": "residentes",
-      "estado": "en-instalacion",
+      "estado": "operativo",
       "cargadores": [
         {
           "nombre": "Conjunto Residencial Aquapark - Casa i1",
