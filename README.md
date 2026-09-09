@@ -346,7 +346,8 @@ servicio, sin dirección visible) y `sameAs` cuando existan redes oficiales.
   El Perfil de Empresa de Google va sin dirección visible hasta tener sede o estación pública real.
 - **Analítica:** no instalar scripts de tracking/cookies por ahora. Usar Search Console primero;
   GA4/Meta Pixel/Hotjar/Plausible quedan para después de aprobar privacidad y aviso/capa de cookies si aplica.
-- **Badges de tiendas:** ✅ **App Store con enlace real y clicable** (`apps.apple.com/co/app/autovolt-energy/id6795232669`).
-  **Google Play sigue como "Próximamente" y deshabilitado** (`store--disabled`) porque la app está en prueba
-  cerrada, no publicada. Pendiente: convertirlo en `<a>` con la URL real el día que Android salga a producción
-  (bloqueado por los 14 días × ≥12 verificadores de Play, ver `../Operativo/PLAN-DE-AVANCE.md`).
+- **Badges de tiendas:** ✅ **Ambas tiendas con enlace real y clicable** — App Store
+  (`apps.apple.com/co/app/autovolt-energy/id6795232669`) y Google Play
+  (`play.google.com/store/apps/details?id=co.autovolt.app`, activado el 8 sep 2026 al confirmarse
+  Android en Producción). El flujo de invitación por WhatsApp para Android en `descarga-app.html`
+  quedó retirado en el mismo commit: ahora descarga directa, igual que iOS.
