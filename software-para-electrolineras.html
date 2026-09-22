@@ -111,7 +111,7 @@
       {
         "@type": "Question",
         "name": "¿Funciona en Colombia y cumple la normativa?",
-        "acceptedAnswer": { "@type": "Answer", "text": "AutoVolt opera en Colombia como CPO y acompaña la puesta en marcha con revisión de requisitos técnicos/regulatorios aplicables, incluyendo RETIE/SIC y conectores para carga DC pública cuando correspondan." }
+        "acceptedAnswer": { "@type": "Answer", "text": "AutoVolt opera en Colombia como CPO y acompaña la puesta en marcha con revisión de requisitos técnicos/regulatorios aplicables, incluyendo RETIE/SIC y conectores para carga DC pública cuando correspondan. La plataforma está preparada para integrarse con el SIEM-UPME (reporte OCPI 2.2.1, Resolución 40559 de 2025) a medida que el operador activa puntos de acceso público." }
       },
       {
         "@type": "Question",
@@ -168,11 +168,6 @@
           <a href="#cotizar" class="btn btn--primary btn--lg">Quiero que me avisen</a>
           <a href="#plataforma" class="btn btn--ghost btn--lg">Ver qué incluye</a>
         </div>
-        <div class="hero__stats">
-          <div><strong>OCPP 1.6-J</strong><span>estándar abierto</span></div>
-          <div><strong>A tu medida</strong><span>dos modelos</span></div>
-          <div><strong>Todo incluido</strong><span>opcional</span></div>
-        </div>
       </div>
       <div class="hero__art reveal" data-delay="2" aria-hidden="true">
         <div class="panel art--float">
@@ -197,12 +192,40 @@
       </div>
     </section>
 
+    <!-- ── SIEM-UPME ────────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="section__head reveal">
+        <p class="platform__kicker">Cumplimiento normativo</p>
+        <h2>Preparados para el reporte a SIEM-UPME</h2>
+        <p>Desde la Resolución 40559 de 2025, todo operador con puntos de carga de acceso público debe reportar su información al SIEM-UPME bajo el estándar OCPI 2.2.1. Así queda repartida la responsabilidad entre tú y la plataforma.</p>
+      </div>
+      <div class="grid grid--2">
+        <article class="card card--service">
+          <span class="card__step">① Lo que exige la norma</span>
+          <p class="card__specs" style="margin-top:14px;font-size:.92rem;line-height:1.7;">
+            Reportar <strong>estaciones, sesiones y tarifas</strong> al SIEM-UPME en formato OCPI 2.2.1.<br><br>
+            Aplica solo a puntos de <strong>acceso público</strong>; una flota privada queda por fuera.<br><br>
+            Reporte <strong>por evento</strong>, no por sondeo: máximo 60 segundos ante cualquier cambio de estado.<br><br>
+            <strong>Registro previo en CárgaME</strong> y credenciales propias ante UPME, a cargo del operador.
+          </p>
+        </article>
+        <article class="card card--service">
+          <span class="card__step">✓ Qué hace la plataforma por ti</span>
+          <p class="card__specs" style="margin-top:14px;font-size:.92rem;line-height:1.7;">
+            <strong>Credenciales independientes por operador</strong>, sin mezclarse entre cuentas.<br><br>
+            <strong>Envío automático</strong> de estados, sesiones y tarifas al SIEM, en el formato exigido.<br><br>
+            <strong>Trazabilidad</strong> de cada evento reportado, lista para auditoría.<br><br>
+            Tú haces el registro ante CárgaME y UPME; la plataforma habla el protocolo por ti.
+          </p>
+        </article>
+      </div>
+    </section>
+
     <!-- ── Para quién ───────────────────────────────────────────────── -->
     <!-- ── Qué trae la plataforma ───────────────────────────────────── -->
     <section id="plataforma" class="section">
       <div class="section__head reveal">
         <h2>Qué trae la plataforma</h2>
-        <p>Esto no es un plan a futuro: cada una de estas piezas ya está construida y funcionando hoy.</p>
       </div>
       <div class="grid grid--3">
 
@@ -397,7 +420,6 @@
     <!-- ── ¿Por qué no una plataforma extranjera? ───────────────────── -->
     <section class="section">
       <div class="section__head reveal">
-        <p class="platform__kicker">¿Comparando con plataformas del exterior?</p>
         <h2>Hecho para Colombia, a una fracción del costo</h2>
         <p>Existen plataformas de carga en Europa y EE.UU. — y son buenas. Pero están hechas para otros mercados: te cobran en dólares o euros, no facturan a la DIAN, no integran los pagos locales y te dan soporte en inglés. Terminas pagando varias veces más y armando por tu cuenta todo lo colombiano.</p>
       </div>
@@ -419,7 +441,6 @@
           </p>
         </article>
       </div>
-      <p class="models__hint" style="text-align:center;margin:24px auto 0;max-width:740px;opacity:.9;">El software base es parecido en todo el mundo; la diferencia real está en el <strong>encaje colombiano</strong> —pagos, DIAN, norma, idioma y precio en pesos— y ahí es donde una plataforma extranjera te sale mucho más cara.</p>
     </section>
 
 
@@ -472,7 +493,7 @@
         </details>
         <details class="faq__item">
           <summary>¿Funciona en Colombia y cumple la normativa?</summary>
-          <p>AutoVolt opera en Colombia como CPO y acompaña la puesta en marcha con revisión de requisitos técnicos/regulatorios aplicables, incluyendo RETIE/SIC y conectores para carga DC pública cuando correspondan.</p>
+          <p>AutoVolt opera en Colombia como CPO y acompaña la puesta en marcha con revisión de requisitos técnicos/regulatorios aplicables, incluyendo RETIE/SIC y conectores para carga DC pública cuando correspondan. La plataforma está preparada para integrarse con el SIEM-UPME (reporte OCPI 2.2.1, Resolución 40559 de 2025) a medida que el operador activa puntos de acceso público.</p>
         </details>
         <details class="faq__item">
           <summary>¿Por qué elegirlos a ustedes y no una plataforma internacional?</summary>
