@@ -1,8 +1,0 @@
-[
-  {
-    "id": "parkee-101",
-    "name": "Parkee 101",
-    "apiBaseUrl": "https://api-hernandez.autovoltenergy.net",
-    "wsBaseUrl": "wss://api-hernandez.autovoltenergy.net/appws"
-  }
-]
